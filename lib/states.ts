@@ -120,7 +120,7 @@ export function routeState(abbr?: string): RouteResult {
       status: 'UNKNOWN',
       headline: 'Your request has been received',
       body:
-        'We have not yet confirmed agent availability for your state. Your information has been saved and a team member will follow up within one business day to confirm eligibility and next steps. In the meantime you can review plans directly at HealthCare.gov — no agent required.',
+        'We have not yet confirmed agent availability for your state. Your information has been saved and a team member will follow up within one business day to confirm eligibility and next steps. In the meantime you can review plans directly at HealthCare.gov, with no agent required.',
       canEnrollOnline: false,
     }
   }

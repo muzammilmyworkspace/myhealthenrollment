@@ -7,7 +7,7 @@ import { greenStates } from '@/lib/states'
 export const metadata: Metadata = {
   title: 'ACA Marketplace Health Insurance',
   description:
-    'Understand ACA Marketplace health plans, metal tiers, premium tax credits and enrollment periods — with guidance from a licensed independent agent.',
+    'Understand ACA Marketplace health plans, metal tiers, premium tax credits and enrollment periods, with guidance from a licensed independent agent.',
   alternates: { canonical: '/aca-health-insurance' },
 }
 
@@ -58,7 +58,7 @@ const FAQS = [
   },
   {
     q: 'Can I be denied for a pre-existing condition?',
-    a: 'No. ACA Marketplace plans cannot deny coverage, charge you more, or exclude treatment because of a pre-existing condition. Premiums can vary by age, location, tobacco use and plan tier — but not health status.',
+    a: 'No. ACA Marketplace plans cannot deny coverage, charge you more, or exclude treatment because of a pre-existing condition. Premiums can vary by age, location, tobacco use and plan tier, but not health status.',
   },
   {
     q: 'What if I have coverage through my job?',
@@ -66,11 +66,11 @@ const FAQS = [
   },
   {
     q: 'What does an agent cost me?',
-    a: 'Nothing. Licensed agents are compensated by the carrier when someone enrolls. The premium is the same whether you use an agent or enroll yourself — the difference is having someone compare plans, check whether your doctors are in network, and handle the paperwork.',
+    a: 'Nothing. Licensed agents are compensated by the carrier when someone enrolls. The premium is the same whether you use an agent or enroll yourself. The difference is having someone compare plans, check whether your doctors are in network, and handle the paperwork.',
   },
   {
     q: 'What is a benchmark plan?',
-    a: 'The second-lowest-cost Silver plan available in your area. It is the reference point used to calculate premium tax credits. You do not have to buy the benchmark plan — it is simply the yardstick the subsidy math uses.',
+    a: 'The second-lowest-cost Silver plan available in your area. It is the reference point used to calculate premium tax credits. You do not have to buy the benchmark plan. It is simply the yardstick the subsidy math uses.',
   },
 ]
 
@@ -101,11 +101,11 @@ export default function AcaPage() {
           <div className="card border-teal-200 bg-teal-50">
             <h3 className="text-xl">Open Enrollment</h3>
             <p className="mt-2 text-2xl font-extrabold text-teal-700">
-              {OEP.startLabel} – {OEP.endLabel}
+              {OEP.startLabel} to {OEP.endLabel}
             </p>
             <p className="mt-3 text-[15px] leading-relaxed text-navy-700">
               During this window anyone eligible can enroll or change plans for {OEP.planYear}{' '}
-              coverage — no qualifying event needed. Enrolling earlier in the window usually means
+              coverage, with no qualifying event needed. Enrolling earlier in the window usually means
               coverage starts sooner.
             </p>
             <p className="legal mt-4">
@@ -117,7 +117,7 @@ export default function AcaPage() {
           <div className="card">
             <h3 className="text-xl">Special Enrollment Period</h3>
             <p className="mt-2 text-[15px] leading-relaxed text-navy-500">
-              Outside Open Enrollment, a qualifying life event can open a limited window —
+              Outside Open Enrollment, a qualifying life event can open a limited window,
               typically 60 days from the event:
             </p>
             <ul className="mt-4 space-y-2">
@@ -142,7 +142,7 @@ export default function AcaPage() {
           <SectionHeading
             eyebrow="Plan tiers"
             title="Bronze, Silver, Gold and Platinum"
-            sub="Tiers describe how you and the plan split costs — not the quality of care. Every tier covers the same essential health benefits."
+            sub="Tiers describe how you and the plan split costs, not the quality of care. Every tier covers the same essential health benefits."
           />
           <div className="overflow-hidden rounded-2xl border border-navy-100 bg-white">
             <table className="w-full text-left text-sm">
@@ -194,7 +194,7 @@ export default function AcaPage() {
             <div className="card">
               <h3 className="text-lg">Cost-Sharing Reductions</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-navy-500">
-                Lowers your deductible, copays and out-of-pocket maximum — but{' '}
+                Lowers your deductible, copays and out-of-pocket maximum, but{' '}
                 <strong>only on Silver plans</strong>, and generally only below 250% of the
                 Federal Poverty Level. This is why a Bronze plan that looks cheaper each month can
                 cost more overall for a lower-income household.
@@ -227,7 +227,7 @@ export default function AcaPage() {
             steps={[
               {
                 title: 'Share your basics',
-                body: 'ZIP code, household size, and your situation. Nothing sensitive — no Social Security number in a web form, ever.',
+                body: 'ZIP code, household size, and your situation. Nothing sensitive, and no Social Security number in a web form, ever.',
               },
               {
                 title: 'We confirm your state',

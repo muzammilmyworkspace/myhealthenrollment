@@ -154,7 +154,7 @@ export function estimateSubsidy(input: SubsidyInput): SubsidyResult {
           csrEligible: false,
           headline: 'Your options depend on your state',
           detail:
-            'Your estimated income is below 100% of the Federal Poverty Level, and your state has not expanded Medicaid. Marketplace premium tax credits generally do not apply at this income level. What is available depends on your state and circumstances — a licensed agent can walk you through the options that do exist.',
+            'Your estimated income is below 100% of the Federal Poverty Level, and your state has not expanded Medicaid. Marketplace premium tax credits generally do not apply at this income level. What is available depends on your state and circumstances. A licensed agent can walk you through the options that do exist.',
         }
   }
 

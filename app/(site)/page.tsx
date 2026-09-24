@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import QuizFunnel from '@/components/QuizFunnel'
 import Reveal from '@/components/Reveal'
-import { LogoMark } from '@/components/Logo'
+import { LogoFull } from '@/components/Logo'
 import {
   SectionHeading, FeatureCard, Steps, FAQ, CtaBand, TrustBar, Check,
   Blobs, WaveDivider, IconShield, IconHeart, IconSmile, IconBuilding,
@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: 'How much does your help cost?',
-    a: 'Nothing. Our service is free to you — licensed agents are compensated by the insurance carrier when someone enrolls. You pay the same premium whether you use an agent or enroll on your own.',
+    a: 'Nothing. Our service is free to you. Licensed agents are compensated by the insurance carrier when someone enrolls. You pay the same premium whether you use an agent or enroll on your own.',
   },
   {
     q: 'When can I enroll in an ACA Marketplace plan?',
-    a: `Open Enrollment for ${OEP.planYear} coverage runs from ${OEP.startLabel} through ${OEP.endLabel}. Outside that window you can enroll if you have a qualifying life event — such as losing job-based coverage, getting married, having a baby, or moving — which opens a Special Enrollment Period. Dates and eligibility rules are set by the Marketplace and can change.`,
+    a: `Open Enrollment for ${OEP.planYear} coverage runs from ${OEP.startLabel} through ${OEP.endLabel}. Outside that window you can enroll if you have a qualifying life event, such as losing job-based coverage, getting married, having a baby, or moving. That opens a Special Enrollment Period. Dates and eligibility rules are set by the Marketplace and can change.`,
   },
   {
     q: 'Will I qualify for savings?',
@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: 'What happens after I submit the form?',
-    a: `You will immediately see whether a licensed agent is available in your state. A licensed agent then reaches out through the contact method you chose — usually within one business day — to review verified options with you. Nothing is submitted, selected, or purchased without your explicit confirmation. You can also call us directly at ${SITE.phone}.`,
+    a: `You will immediately see whether a licensed agent is available in your state. A licensed agent then reaches out through the contact method you chose, usually within one business day, to review verified options with you. Nothing is submitted, selected, or purchased without your explicit confirmation. You can also call us directly at ${SITE.phone}.`,
   },
 ]
 
@@ -63,7 +63,7 @@ export default function HomePage() {
                 <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-grass-400" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-grass-400" />
               </span>
-              Open Enrollment {OEP.planYear}: {OEP.startLabel} – {OEP.endLabel}
+              Open Enrollment {OEP.planYear}: {OEP.startLabel} to {OEP.endLabel}
             </p>
 
             <h1
@@ -80,13 +80,13 @@ export default function HomePage() {
               style={{ animationDelay: '.18s' }}
             >
               Compare ACA Marketplace plans for individuals and families across{' '}
-              {SITE.agent.stateCount} states. We handle the paperwork and the comparison — you
+              {SITE.agent.stateCount} states. We handle the paperwork and the comparison. You
               decide. Our help costs nothing and there is no obligation to enroll.
             </p>
 
             <ul className="stagger mt-8 space-y-3.5">
               {[
-                'A licensed independent agent — not a call centre',
+                'A licensed independent agent, not a call centre',
                 'Enrollment through a CMS-certified secure platform',
                 'We never promise a price before checking your state',
               ].map((t) => (
@@ -108,13 +108,29 @@ export default function HomePage() {
               </a>
             </div>
 
-            <p
-              className="mt-7 max-w-xl animate-fade-up text-xs leading-relaxed text-navy-300"
+            <div
+              className="mt-8 max-w-xl animate-fade-up rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm"
               style={{ animationDelay: '.5s' }}
             >
-              My Health Enrollment is a private insurance agency. We are not affiliated with,
-              endorsed by, or acting on behalf of any government agency.
-            </p>
+              <p className="text-xs leading-relaxed text-navy-100">
+                <strong className="font-bold text-white">Important:</strong> My Health Enrollment
+                is an independent, licensed insurance agency. We are{' '}
+                <strong className="font-bold text-white">
+                  not affiliated with or endorsed by the U.S. government
+                </strong>{' '}
+                or CMS. Calling{' '}
+                <a href={SITE.phoneHref} className="font-bold text-teal-200 underline underline-offset-2">
+                  {SITE.phone}
+                </a>{' '}
+                connects you first to the My Health Enrollment AI customer support assistant. It
+                may collect basic routing information, help with general educational questions,
+                send a secure enrollment link or schedule a callback with consent, and connect you
+                with a licensed insurance agent when appropriate. Do not provide Social Security
+                numbers, banking information, payment card information, passwords, or sensitive
+                medical information to the AI assistant. Plans and availability vary by state. Not
+                all plans are available in all areas.
+              </p>
+            </div>
           </div>
 
           <div id="start" className="animate-scale-in scroll-mt-24" style={{ animationDelay: '.25s' }}>
@@ -164,13 +180,12 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal delay={140} className="order-1 lg:order-2">
-              <div className="relative mx-auto flex max-w-sm items-center justify-center">
-                {/* concentric rings behind the mark */}
-                <span className="absolute h-[19rem] w-[19rem] rounded-full border border-teal-100" aria-hidden="true" />
-                <span className="absolute h-[14.5rem] w-[14.5rem] rounded-full border border-grass-100" aria-hidden="true" />
-                <span className="blob absolute h-56 w-56 bg-teal-200/40 animate-float" aria-hidden="true" />
+              <div className="relative mx-auto flex max-w-md items-center justify-center">
+                <span className="absolute h-[21rem] w-[21rem] rounded-full border border-teal-100" aria-hidden="true" />
+                <span className="absolute h-[16rem] w-[16rem] rounded-full border border-grass-100" aria-hidden="true" />
+                <span className="blob absolute h-64 w-64 animate-float bg-teal-200/40" aria-hidden="true" />
                 <div className="relative animate-bob rounded-[2rem] bg-white p-8 shadow-lift ring-1 ring-navy-100">
-                  <LogoMark className="h-40 w-40" animated />
+                  <LogoFull className="h-auto w-56 sm:w-64" priority />
                 </div>
               </div>
             </Reveal>
@@ -199,7 +214,7 @@ export default function HomePage() {
               delay={90}
               icon={<IconHeart />}
               title="Life & Final Expense"
-              body="Term, whole and final expense policies from multiple A-rated carriers — coverage sized to what your family would actually need."
+              body="Term, whole and final expense policies from multiple A-rated carriers, sized to what your family would actually need."
               href="/life-insurance"
               cta="Explore life insurance"
             />
@@ -215,7 +230,7 @@ export default function HomePage() {
               delay={270}
               icon={<IconBuilding />}
               title="Employer Group Benefits"
-              body="Group health, dental, vision, life and disability for businesses of 1–500+ employees, with custom proposals at no cost."
+              body="Group health, dental, vision, life and disability for businesses of 1 to 500+ employees, with custom proposals at no cost."
               href="/employer-group"
               cta="Explore group benefits"
             />
@@ -236,7 +251,7 @@ export default function HomePage() {
             steps={[
               {
                 title: 'Tell us where you live',
-                body: 'A few quick questions — ZIP code, household size, and your situation. No Social Security number, and nothing sensitive.',
+                body: 'A few quick questions: ZIP code, household size, and your situation. No Social Security number, and nothing sensitive.',
               },
               {
                 title: 'We check your state',
@@ -244,7 +259,7 @@ export default function HomePage() {
               },
               {
                 title: 'A licensed agent reviews with you',
-                body: 'Verified options for your area, walked through by a licensed agent. Enrollment happens in a secure CMS-certified platform — only when you say so.',
+                body: 'Verified options for your area, walked through by a licensed agent. Enrollment happens in a secure CMS-certified platform, only when you say so.',
               },
             ]}
           />
@@ -276,7 +291,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 rounded-2xl bg-grid-light" aria-hidden="true" />
                 <div className="relative">
                   <p className="text-sm font-bold uppercase tracking-wider text-teal-300">
-                    Example — household of 3
+                    Example: household of 3
                   </p>
                   <p className="mt-5 text-sm text-navy-200">Estimated annual income</p>
                   <p className="text-3xl font-extrabold">$45,000</p>

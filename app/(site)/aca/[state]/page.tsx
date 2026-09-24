@@ -56,11 +56,11 @@ export default async function StatePage({ params }: { params: Promise<Params> })
       a:
         s.exchange === 'federal'
           ? `${s.name} uses the federal Marketplace, so Open Enrollment for ${OEP.planYear} coverage runs ${OEP.startLabel} through ${OEP.endLabel}. Outside that window you need a qualifying life event to enroll. Dates are set by CMS and can change.`
-          : `${s.name} runs its own exchange${s.exchangeName ? ` (${s.exchangeName})` : ''}, and state exchanges sometimes set different enrollment dates than the federal Marketplace. The federal window for ${OEP.planYear} coverage runs ${OEP.startLabel} through ${OEP.endLabel} — confirm your state's dates before relying on them.`,
+          : `${s.name} runs its own exchange${s.exchangeName ? ` (${s.exchangeName})` : ''}, and state exchanges sometimes set different enrollment dates than the federal Marketplace. The federal window for ${OEP.planYear} coverage runs ${OEP.startLabel} through ${OEP.endLabel}. Confirm your state's dates before relying on them.`,
     },
     {
       q: `Where do I apply for coverage in ${s.name}?`,
-      a: `Residents of ${s.name} apply through ${applyVia}. We can walk you through that process — and, where available, help you complete it inside a secure CMS-certified enrollment platform.`,
+      a: `Residents of ${s.name} apply through ${applyVia}. We can walk you through that process, and where available help you complete it inside a secure CMS-certified enrollment platform.`,
     },
     {
       q: `Does ${s.name} have expanded Medicaid?`,
@@ -70,7 +70,7 @@ export default async function StatePage({ params }: { params: Promise<Params> })
     },
     {
       q: `Can I be denied coverage in ${s.name} for a pre-existing condition?`,
-      a: 'No. ACA Marketplace plans cannot deny you, charge you more, or exclude treatment because of a pre-existing condition. Premiums vary by age, location, tobacco use and plan tier — not health status.',
+      a: 'No. ACA Marketplace plans cannot deny you, charge you more, or exclude treatment because of a pre-existing condition. Premiums vary by age, location, tobacco use and plan tier, not health status.',
     },
     {
       q: 'What does your help cost?',
@@ -99,7 +99,7 @@ export default async function StatePage({ params }: { params: Promise<Params> })
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-navy-500">
                 Compare Marketplace coverage available in {s.name} with a licensed independent
-                agent. We check which plans and carriers are actually offered in your ZIP code —
+                agent. We check which plans and carriers are actually offered in your ZIP code,
                 free, and with no obligation to enroll.
               </p>
 
@@ -114,7 +114,7 @@ export default async function StatePage({ params }: { params: Promise<Params> })
                     : `${s.name} has not expanded Medicaid`}
                 </li>
                 <li className="flex gap-2.5 text-[15px] font-medium text-navy-700">
-                  <Check /> Open Enrollment: {OEP.startLabel} – {OEP.endLabel}
+                  <Check /> Open Enrollment: {OEP.startLabel} to {OEP.endLabel}
                 </li>
               </ul>
 
@@ -170,7 +170,7 @@ export default async function StatePage({ params }: { params: Promise<Params> })
                   {s.name} expanded Medicaid under the ACA. Adults with household income below
                   roughly 138% of the Federal Poverty Level may qualify for Medicaid instead of a
                   subsidized Marketplace plan. If your income is near that line it is worth
-                  checking both paths — an agent can point you to the right application.
+                  checking both paths. An agent can point you to the right application.
                 </>
               ) : (
                 <>
@@ -189,7 +189,7 @@ export default async function StatePage({ params }: { params: Promise<Params> })
               Premiums in {s.name} depend on your rating area, the ages of everyone covered,
               tobacco use, and which carriers file rates where you live. Because of that, no
               honest source can quote you a price before checking your ZIP code. What we can tell
-              you is how the savings math works — and then show you real plans inside the secure
+              you is how the savings math works, and then show you real plans inside the secure
               enrollment platform.
             </p>
           </div>

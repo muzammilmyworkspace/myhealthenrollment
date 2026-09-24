@@ -50,7 +50,7 @@ export default function Header() {
             className="flex min-w-0 items-center gap-2 whitespace-nowrap hover:text-teal-300"
           >
             <PhoneIcon />
-            <span className="hidden sm:inline">Free quotes — call or text</span>
+            <span className="hidden sm:inline">Free quotes, call or text</span>
             <strong className="font-bold">{SITE.phone}</strong>
           </a>
         </div>
@@ -63,12 +63,12 @@ export default function Header() {
             : 'border-transparent bg-white'
         }`}
       >
-        <div className="container-page flex h-[72px] items-center justify-between gap-3">
-          <Link href="/" onClick={() => setOpen(false)} className="min-w-0" aria-label="My Health Enrollment — home">
+        <div className="container-page flex h-[72px] items-center justify-between gap-6">
+          <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0" aria-label="My Health Enrollment home">
             <Logo />
           </Link>
 
-          <nav className="hidden items-center gap-0.5 lg:flex">
+          <nav className="hidden flex-1 items-center justify-center gap-0.5 xl:flex">
             {NAV.map((item) => (
               <Link
                 key={item.href}
@@ -83,7 +83,7 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <a
               href={SITE.phoneHref}
-              className="hidden items-center gap-2 whitespace-nowrap rounded-xl px-3 py-2 text-sm font-bold text-navy-700 hover:bg-navy-50 xl:flex"
+              className="hidden items-center gap-2 whitespace-nowrap rounded-xl px-3 py-2 text-sm font-bold text-navy-700 hover:bg-navy-50 2xl:flex"
             >
               <PhoneIcon />
               {SITE.phone}
@@ -94,7 +94,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="rounded-lg p-2 text-navy-700 hover:bg-navy-50 lg:hidden"
+              className="rounded-lg p-2 text-navy-700 hover:bg-navy-50 xl:hidden"
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
             >
@@ -110,7 +110,7 @@ export default function Header() {
         </div>
 
         {open && (
-          <div className="border-t border-navy-100 bg-white lg:hidden">
+          <div className="border-t border-navy-100 bg-white xl:hidden">
             <nav className="container-page flex flex-col py-3">
               {NAV.map((item, i) => (
                 <Link

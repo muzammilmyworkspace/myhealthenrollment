@@ -27,10 +27,10 @@ const HOUSEHOLD = ['1', '2', '3', '4', '5', '6+']
 
 const INCOME_BANDS = [
   { value: 'under-20k', label: 'Under $20,000' },
-  { value: '20k-30k', label: '$20,000 – $30,000' },
-  { value: '30k-45k', label: '$30,000 – $45,000' },
-  { value: '45k-65k', label: '$45,000 – $65,000' },
-  { value: '65k-100k', label: '$65,000 – $100,000' },
+  { value: '20k-30k', label: '$20,000 to $30,000' },
+  { value: '30k-45k', label: '$30,000 to $45,000' },
+  { value: '45k-65k', label: '$45,000 to $65,000' },
+  { value: '65k-100k', label: '$65,000 to $100,000' },
   { value: 'over-100k', label: 'Over $100,000' },
   { value: 'prefer-not', label: "I'd rather not say" },
 ]
@@ -150,6 +150,19 @@ export default function QuizFunnel({ source = 'quiz' }: { source?: string }) {
 
   return (
     <div className="card relative overflow-hidden sm:p-8">
+      <div className="mb-5 flex items-start justify-between gap-4">
+        <div>
+          <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-teal-600">
+            Free guidance
+          </p>
+          <h2 className="mt-1 text-2xl">Get Your Free Quote</h2>
+          <p className="mt-1 text-sm text-navy-400">A few quick steps, no obligation</p>
+        </div>
+        <span className="mt-1 whitespace-nowrap text-sm font-semibold text-navy-400">
+          Step {step} of {TOTAL_STEPS}
+        </span>
+      </div>
+
       <Progress step={step} />
 
       <form onSubmit={submit} noValidate>
@@ -249,7 +262,7 @@ export default function QuizFunnel({ source = 'quiz' }: { source?: string }) {
         {step === 4 && (
           <Step
             title="Estimated annual household income"
-            sub="Used only to check whether savings may be available. A range is fine — you can also skip this."
+            sub="Used only to check whether savings may be available. A range is fine, and you can also skip this."
           >
             <div className="space-y-2.5">
               {INCOME_BANDS.map((b) => (
@@ -338,6 +351,29 @@ export default function QuizFunnel({ source = 'quiz' }: { source?: string }) {
             </button>
           )}
         </div>
+
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-navy-100 pt-4 text-sm">
+          <a
+            href={SITE.phoneHref}
+            className="flex items-center gap-2 font-bold text-navy-600 hover:text-teal-700"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z" />
+            </svg>
+            {SITE.phone}
+          </a>
+          <a
+            href={SITE.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 font-semibold text-navy-500 hover:text-teal-700"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
+            Schedule callback
+          </a>
+        </div>
       </form>
     </div>
   )
@@ -349,11 +385,7 @@ function Progress({ step }: { step: number }) {
   const pct = Math.round((step / TOTAL_STEPS) * 100)
   return (
     <div className="mb-7">
-      <div className="mb-2 flex items-center justify-between text-sm">
-        <span className="font-extrabold text-navy-800">Step {step} of {TOTAL_STEPS}</span>
-        <span className="text-navy-400">About {Math.max(1, TOTAL_STEPS - step)} min left</span>
-      </div>
-      <div className="h-2 overflow-hidden rounded-full bg-navy-100">
+      <div className="h-1.5 overflow-hidden rounded-full bg-navy-100">
         <div
           className="h-full rounded-full bg-gradient-to-r from-teal-500 to-grass-500 transition-all duration-500"
           style={{ width: `${pct}%` }}
@@ -420,7 +452,7 @@ function Result({ result, refId }: { result: RouteResult; refId: string | null }
           <p className="text-sm font-extrabold text-navy-900">Continue to secure enrollment</p>
           <p className="mt-1.5 text-sm leading-relaxed text-navy-500">
             {SITE.enrollmentPartner} is a CMS-certified enrollment platform. Plan comparison and
-            selection happen inside that secure environment — never in this form.
+            selection happen inside that secure environment, never in this form.
           </p>
           <a
             href={`https://www.healthsherpa.com/?_agent_id=MHE`}

@@ -46,7 +46,7 @@ export default function LandingPage({
       {/* Minimal header — logo + phone only, no nav */}
       <header className="border-b border-navy-100 bg-white">
         <div className="container-page flex h-16 items-center justify-between">
-          <Link href="/" aria-label="My Health Enrollment — home">
+          <Link href="/" aria-label="My Health Enrollment home">
             <Logo />
           </Link>
           <a
@@ -115,7 +115,7 @@ export default function LandingPage({
               },
               {
                 t: 'Secure enrollment',
-                d: `Applications are completed inside ${SITE.enrollmentPartner}, a CMS-certified platform — never by text or email.`,
+                d: `Applications are completed inside ${SITE.enrollmentPartner}, a CMS-certified platform, never by text or email.`,
               },
             ].map((item) => (
               <div key={item.t} className="text-center sm:text-left">
@@ -134,7 +134,7 @@ export default function LandingPage({
           {[
             { t: 'Answer a few questions', d: 'ZIP code, household size, your situation. Takes about two minutes.' },
             { t: 'We check your state', d: 'You see immediately whether a licensed agent is available where you live.' },
-            { t: 'Review real options', d: 'A licensed agent walks through verified plans for your area. You decide — or you do not.' },
+            { t: 'Review real options', d: 'A licensed agent walks through verified plans for your area. You decide, or you do not.' },
           ].map((s, i) => (
             <li key={s.t} className="card-hover text-center">
               <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-navy-700 to-teal-600 text-base font-extrabold text-white shadow-glow">

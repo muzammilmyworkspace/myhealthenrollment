@@ -49,7 +49,7 @@ export default function QuotePage() {
                 </li>
                 <li>
                   <strong className="text-navy-900">3.</strong> If you decide to move forward,
-                  enrollment happens in a secure CMS-certified platform — never over email or text.
+                  enrollment happens in a secure CMS-certified platform, never over email or text.
                 </li>
               </ol>
             </div>
@@ -73,7 +73,7 @@ export default function QuotePage() {
             items={[
               {
                 q: 'Is my information safe?',
-                a: 'Your information is transmitted over an encrypted connection and used only to respond to your inquiry. We do not sell personal information. Never send a Social Security number, immigration document number, or payment details through a web form or text message — legitimate enrollment collects those only inside the secure enrollment platform.',
+                a: 'Your information is transmitted over an encrypted connection and used only to respond to your inquiry. We do not sell personal information. Never send a Social Security number, immigration document number, or payment details through a web form or text message. Legitimate enrollment collects those only inside the secure enrollment platform.',
               },
               {
                 q: 'Do I have to agree to texts or calls?',

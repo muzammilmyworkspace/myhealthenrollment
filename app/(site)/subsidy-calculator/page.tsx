@@ -5,7 +5,7 @@ import { CtaBand, Callout, PageHero } from '@/components/ui'
 export const metadata: Metadata = {
   title: 'ACA Savings Estimator',
   description:
-    'Estimate how ACA premium tax credits are calculated for your household size and income. Educational tool — no personal information required.',
+    'Estimate how ACA premium tax credits are calculated for your household size and income. Educational tool, no personal information required.',
   alternates: { canonical: '/subsidy-calculator' },
 }
 
@@ -28,7 +28,7 @@ export default function SubsidyCalculatorPage() {
           <div className="prose-page">
             <p>
               The Affordable Care Act caps what a household is expected to pay for a{' '}
-              <strong>benchmark plan</strong> — the second-lowest-cost Silver plan in your area.
+              <strong>benchmark plan</strong>, the second-lowest-cost Silver plan in your area.
               That cap is a percentage of your income, and the percentage rises as income rises.
             </p>
             <p>
@@ -39,7 +39,7 @@ export default function SubsidyCalculatorPage() {
             </p>
             <p>
               Below 250% of the Federal Poverty Level, <strong>cost-sharing reductions</strong> may
-              also apply. These lower your deductible, copays and out-of-pocket maximum — but only
+              also apply. These lower your deductible, copays and out-of-pocket maximum, but only
               on Silver plans. This is why an agent will often point a lower-income household
               toward Silver even when Bronze looks cheaper on paper.
             </p>

@@ -3,7 +3,7 @@ import LandingPage from '@/components/LandingPage'
 import { OEP, SITE } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: `Open Enrollment ${OEP.planYear} — ACA Marketplace Plans`,
+  title: `Open Enrollment ${OEP.planYear}: ACA Marketplace Plans`,
   description: `Open Enrollment for ${OEP.planYear} coverage runs ${OEP.startLabel} through ${OEP.endLabel}. Compare ACA Marketplace plans with a licensed independent agent.`,
   // Paid-traffic pages stay out of the index so they never compete with the
   // SEO pages for the same terms.
@@ -14,13 +14,13 @@ export default function OpenEnrollmentLP() {
   return (
     <LandingPage
       source="lp-open-enrollment"
-      eyebrow={`Open Enrollment: ${OEP.startLabel} – ${OEP.endLabel}`}
+      eyebrow={`Open Enrollment: ${OEP.startLabel} to ${OEP.endLabel}`}
       headline={`Compare ACA Marketplace plans for ${OEP.planYear}`}
       subhead="Open Enrollment is the one time of year anyone eligible can enroll or switch plans without a qualifying life event. A licensed agent can show you what is available in your ZIP code."
       bullets={[
         'Plans for individuals and families in 23 states',
         'Pre-existing conditions cannot be denied or surcharged',
-        'Our help is free — agents are paid by the carrier',
+        'Our help is free, because agents are paid by the carrier',
         'Nothing is submitted without your confirmation',
       ]}
       note={`Coverage start dates depend on when you enroll during the window. If you would rather talk it through, call ${SITE.phone}.`}
@@ -31,11 +31,11 @@ export default function OpenEnrollmentLP() {
         },
         {
           q: 'What if I miss the deadline?',
-          a: 'After Open Enrollment closes you generally need a qualifying life event — losing job-based coverage, marriage, a new baby, or a move — to enroll. That opens a Special Enrollment Period, usually 60 days from the event.',
+          a: 'After Open Enrollment closes you generally need a qualifying life event: losing job-based coverage, marriage, a new baby, or a move, in order to enroll. That opens a Special Enrollment Period, usually 60 days from the event.',
         },
         {
           q: 'How much will a plan cost me?',
-          a: 'That depends on your ZIP code, household size, income, and the ages of everyone covered. Many households qualify for a premium tax credit that lowers the monthly cost. No one can tell you an exact figure before an application is completed — an agent can show you real prices inside the secure enrollment platform.',
+          a: 'That depends on your ZIP code, household size, income, and the ages of everyone covered. Many households qualify for a premium tax credit that lowers the monthly cost. No one can tell you an exact figure before an application is completed. An agent can show you real prices inside the secure enrollment platform.',
         },
         {
           q: 'What does your service cost?',

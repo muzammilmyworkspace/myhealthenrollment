@@ -19,8 +19,8 @@ const DENTAL = [
 ]
 
 const VISION = [
-  'Annual comprehensive eye exam, typically a $10–$20 copay',
-  'Frames and lenses allowance, commonly $100–$200 per year',
+  'Annual comprehensive eye exam, typically a $10 to $20 copay',
+  'Frames and lenses allowance, commonly $100 to $200 per year',
   'Contact lens fitting and supply allowance',
   'Access to major optical chains and independent providers',
   'Discounts on LASIK and premium lens options',
@@ -37,7 +37,7 @@ const FAQS = [
   },
   {
     q: 'Is there a waiting period?',
-    a: 'Often yes for major services such as crowns and root canals — commonly six to twelve months. Preventive care usually starts immediately. Waiting periods vary by plan and carrier, so it is worth checking before you enroll if you already know you need work done.',
+    a: 'Often yes for major services such as crowns and root canals, commonly six to twelve months. Preventive care usually starts immediately. Waiting periods vary by plan and carrier, so it is worth checking before you enroll if you already know you need work done.',
   },
   {
     q: 'What is the difference between PPO and DHMO dental?',
@@ -95,7 +95,7 @@ export default function DentalVisionPage() {
         <div className="mx-auto mt-8 max-w-3xl">
           <Callout tone="info" title="Check the network before you enroll">
             If you already have a dentist or optometrist you want to keep, confirm they are in the
-            plan&apos;s network first. Benefits look similar on paper; networks are where plans
+            plan&apos;s network first. Benefits look similar on paper. Networks are where plans
             differ most in practice.
           </Callout>
         </div>
@@ -110,7 +110,7 @@ export default function DentalVisionPage() {
 
       <CtaBand
         title="Compare dental and vision options"
-        body="A licensed specialist can review what is available in your area — free, with no obligation."
+        body="A licensed specialist can review what is available in your area, free and with no obligation."
       />
     </>
   )

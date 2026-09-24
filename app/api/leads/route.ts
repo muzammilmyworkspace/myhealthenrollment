@@ -144,7 +144,7 @@ async function forwardToCrm(record: { referenceId: string; routing: string }) {
   if (!token || !locationId) {
     console.info(
       `[leads] ${record.referenceId} stored locally (routing=${record.routing}). ` +
-        'CRM sync skipped — GHL_PRIVATE_INTEGRATION_TOKEN / GHL_LOCATION_ID not set.',
+        'CRM sync skipped: GHL_PRIVATE_INTEGRATION_TOKEN / GHL_LOCATION_ID not set.',
     )
     return
   }

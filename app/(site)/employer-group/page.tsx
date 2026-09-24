@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const BENEFITS = [
   {
     title: 'Group Health',
-    body: 'Fully insured or self-funded medical plans for groups of 1–500+ employees, with plan designs matched to your budget and workforce.',
+    body: 'Fully insured or self-funded medical plans for groups of 1 to 500+ employees, with plan designs matched to your budget and workforce.',
   },
   {
     title: 'Group Dental & Vision',
@@ -25,7 +25,7 @@ const BENEFITS = [
   },
   {
     title: 'Disability',
-    body: 'Short-term and long-term disability replacing a portion of income — typically around 60% of salary — when an employee cannot work.',
+    body: 'Short-term and long-term disability replacing a portion of income, typically around 60% of salary, when an employee cannot work.',
   },
 ]
 
@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: 'Are employer contributions tax-deductible?',
-    a: 'Employer contributions toward group health premiums are generally treated as a deductible business expense, and employees typically pay their share with pre-tax dollars, which reduces payroll taxes for both parties. Confirm the specifics with your tax advisor — we are insurance agents, not tax professionals.',
+    a: 'Employer contributions toward group health premiums are generally treated as a deductible business expense, and employees typically pay their share with pre-tax dollars, which reduces payroll taxes for both parties. Confirm the specifics with your tax advisor. We are insurance agents, not tax professionals.',
   },
   {
     q: 'What is an Applicable Large Employer?',
@@ -54,7 +54,7 @@ export default function EmployerGroupPage() {
       <PageHero
         eyebrow="For Employers"
         title="Benefits that help you compete for good people"
-        sub="Health coverage is consistently one of the benefits employees value most. We compare carriers and plan designs, then deliver a custom proposal — free of charge."
+        sub="Health coverage is consistently one of the benefits employees value most. We compare carriers and plan designs, then deliver a custom proposal, free of charge."
       >
         <div className="flex flex-col justify-center gap-3 sm:flex-row">
           <Link href="/quote" className="btn-accent px-8">Request a proposal</Link>

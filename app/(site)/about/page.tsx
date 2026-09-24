@@ -28,7 +28,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About us"
         title="A licensed agent, not a call centre"
-        sub="My Health Enrollment is the doing-business-as brand of JINSUNG INTERNATIONAL LLC, an independent insurance agency. Independent means we are not employed by any single carrier — so we can compare options rather than sell one company's products."
+        sub="My Health Enrollment is the doing-business-as brand of JINSUNG INTERNATIONAL LLC, an independent insurance agency. Independent means we are not employed by any single carrier, so we can compare options rather than sell one company's products."
       />
 
       <section className="container-page py-16">
@@ -48,7 +48,7 @@ export default function AboutPage() {
                   Licensed in {SITE.agent.stateCount} states, helping individuals, families and
                   employers compare ACA Marketplace, life, dental, vision and group coverage.
                   Enrollment is completed through {SITE.enrollmentPartner}, a CMS-certified
-                  platform — never through a web form or text message.
+                  platform, never through a web form or text message.
                 </p>
                 <p className="legal mt-4">{SITE.licenseNote}</p>
               </div>
@@ -59,7 +59,7 @@ export default function AboutPage() {
             <Callout tone="info" title="Verify any agent before you share information">
               Every state maintains a public license lookup, and the National Association of
               Insurance Commissioners publishes a national directory. Checking a license takes a
-              minute and is worth doing with any agent — including us.
+              minute and is worth doing with any agent, including us.
             </Callout>
           </div>
         </div>

@@ -15,14 +15,14 @@ export default function LostCoverageLP() {
       source="lp-lost-coverage"
       eyebrow="Special Enrollment Period"
       headline="Job-based coverage ending? There may be a path to a new plan"
-      subhead="Losing qualifying coverage is one of the life events that opens a Special Enrollment Period — a limited window to enroll in an ACA Marketplace plan outside of Open Enrollment."
+      subhead="Losing qualifying coverage is one of the life events that opens a Special Enrollment Period, a limited window to enroll in an ACA Marketplace plan outside of Open Enrollment."
       bullets={[
         'Typically a 60-day window from the date coverage ends',
         'Pre-existing conditions cannot be denied or surcharged',
         'Many households qualify for a premium tax credit',
-        'Our help is free — agents are paid by the carrier',
+        'Our help is free, because agents are paid by the carrier',
       ]}
-      note="Documentation of the coverage loss is usually required. Eligibility rules are set by the Marketplace and can change — a licensed agent can confirm what applies to your situation."
+      note="Documentation of the coverage loss is usually required. Eligibility rules are set by the Marketplace and can change. A licensed agent can confirm what applies to your situation."
       faqs={[
         {
           q: 'How long do I have to enroll?',

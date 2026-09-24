@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const PRODUCTS = [
   {
     title: 'Term Life',
-    body: 'Coverage for a set period — commonly 10, 20 or 30 years. Pays a death benefit if you pass away during the term. The most affordable way to cover income replacement, a mortgage, or the years until children are independent.',
+    body: 'Coverage for a set period, commonly 10, 20 or 30 years. Pays a death benefit if you pass away during the term. The most affordable way to cover income replacement, a mortgage, or the years until children are independent.',
   },
   {
     title: 'Whole Life',
@@ -25,14 +25,14 @@ const PRODUCTS = [
   },
   {
     title: 'Final Expense',
-    body: 'Smaller whole life policies, often $5,000–$50,000, designed to cover funeral and end-of-life costs so the bill does not fall to family. Simplified underwriting — frequently no medical exam.',
+    body: 'Smaller whole life policies, often $5,000 to $50,000, designed to cover funeral and end-of-life costs so the bill does not fall to family. Simplified underwriting, frequently with no medical exam.',
   },
 ]
 
 const FAQS = [
   {
     q: 'How much life insurance do I actually need?',
-    a: 'A common starting point is 10–12 times annual income, then adjusted for debts, the mortgage balance, future education costs, and any coverage you already have through work. An agent can walk through the arithmetic with you rather than guessing at a round number.',
+    a: 'A common starting point is 10 to 12 times annual income, then adjusted for debts, the mortgage balance, future education costs, and any coverage you already have through work. An agent can walk through the arithmetic with you rather than guessing at a round number.',
   },
   {
     q: 'Do I need a medical exam?',
@@ -40,7 +40,7 @@ const FAQS = [
   },
   {
     q: 'Is coverage through my employer enough?',
-    a: 'Group life through an employer is a good benefit but usually modest — often one or two times salary — and it typically ends when you leave the job. Many people carry an individual policy alongside it so coverage does not depend on staying employed.',
+    a: 'Group life through an employer is a good benefit but usually modest, often one or two times salary, and it typically ends when you leave the job. Many people carry an individual policy alongside it so coverage does not depend on staying employed.',
   },
   {
     q: 'Can I be turned down?',
@@ -84,7 +84,7 @@ export default function LifeInsurancePage() {
           />
           <div className="prose-page">
             <p>
-              Most families are protecting a <strong>window of time</strong> — the years until the
+              Most families are protecting a <strong>window of time</strong>: the years until the
               mortgage is paid and the children are independent. Term insurance covers exactly
               that window at the lowest cost per dollar of coverage.
             </p>
@@ -92,7 +92,7 @@ export default function LifeInsurancePage() {
               Permanent insurance makes sense when the need does not end: a lifelong dependent, an
               estate or business obligation, or simply wanting to guarantee funeral costs are
               covered whenever that day comes. Many term policies can be converted to permanent
-              later without new medical underwriting — a useful option to ask about up front.
+              later without new medical underwriting, which is worth asking about up front.
             </p>
           </div>
           <div className="mt-6">
@@ -112,7 +112,7 @@ export default function LifeInsurancePage() {
 
       <CtaBand
         title="Not sure how much coverage you need?"
-        body="A licensed agent can walk through the numbers with you — free, and with no obligation."
+        body="A licensed agent can walk through the numbers with you, free and with no obligation."
       />
     </>
   )

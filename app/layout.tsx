@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Compare ACA Marketplace, life, dental, vision and group coverage with a licensed independent agent. Free guidance, no obligation to enroll.',
   applicationName: SITE.name,
-  authors: [{ name: `${SITE.name} — Agent ${SITE.agent.name}` }],
+  authors: [{ name: `${SITE.name}, Agent ${SITE.agent.name}` }],
   robots: { index: true, follow: true },
   alternates: { canonical: '/' },
   openGraph: {
@@ -21,17 +21,23 @@ export const metadata: Metadata = {
     title: 'Affordable Health Insurance Guidance | My Health Enrollment',
     description:
       'Compare ACA Marketplace, life, dental, vision and group coverage with a licensed independent agent.',
+    images: [{ url: '/icon-512.png', width: 512, height: 512, alt: 'My Health Enrollment' }],
   },
-  twitter: { card: 'summary' },
+  twitter: { card: 'summary', images: ['/icon-512.png'] },
   icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    icon: [
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#2563eb',
+  themeColor: '#102348',
 }
 
 /** schema.org — helps the business surface in local/branded search. */
@@ -46,6 +52,8 @@ const jsonLd = {
       description:
         'Licensed independent insurance agency providing ACA Marketplace, life, dental, vision and group coverage guidance.',
       url: SITE.url,
+      logo: `${SITE.url}/icon-512.png`,
+      image: `${SITE.url}/icon-512.png`,
       telephone: '+18444828281',
       email: SITE.email,
       address: {

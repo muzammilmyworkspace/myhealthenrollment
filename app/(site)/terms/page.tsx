@@ -70,7 +70,7 @@ export default function TermsPage() {
 
           <h2>7. Your responsibilities</h2>
           <ul>
-            <li>Provide accurate information — insurance applications rely on it, and inaccurate information can affect coverage</li>
+            <li>Provide accurate information, because insurance applications rely on it, and inaccurate information can affect coverage</li>
             <li>Do not submit sensitive identifiers or payment details through this site</li>
             <li>Do not use the site unlawfully or attempt to disrupt it</li>
             <li>Review any policy documents before enrolling; the carrier&apos;s documents control</li>
