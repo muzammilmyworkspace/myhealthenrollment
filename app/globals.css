@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white text-slate-800 antialiased;
+  }
+  /* Visible focus for keyboard users on every interactive element. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-600 ring-offset-2;
+  }
+  h1, h2, h3, h4 {
+    @apply text-slate-900 font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5
+           text-base font-semibold transition-colors
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary  { @apply btn bg-brand-600 text-white hover:bg-brand-700; }
+  .btn-accent   { @apply btn bg-accent-600 text-white hover:bg-accent-700; }
+  .btn-outline  { @apply btn border-2 border-brand-600 bg-white text-brand-700 hover:bg-brand-50; }
+  .btn-ghost    { @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50; }
+
+  .card {
+    @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-sm;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base
+           text-slate-900 placeholder:text-slate-400
+           focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-200;
+  }
+  .field-error {
+    @apply border-red-400 focus:border-red-500 focus:ring-red-100;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-slate-700;
+  }
+  .error-text {
+    @apply mt-1.5 text-sm font-medium text-red-600;
+  }
+
+  .legal {
+    @apply text-xs leading-relaxed text-slate-500;
+  }
+  .prose-page {
+    @apply space-y-4 text-[15px] leading-relaxed text-slate-700;
+  }
+  .prose-page h2 { @apply mt-10 mb-3 text-2xl; }
+  .prose-page h3 { @apply mt-7 mb-2 text-lg; }
+  .prose-page ul { @apply list-disc space-y-2 pl-6; }
+  .prose-page a  { @apply text-brand-700 underline underline-offset-2 hover:text-brand-800; }
+}
+
+/* Respect users who ask for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
