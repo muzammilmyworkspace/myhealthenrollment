@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import QuizFunnel from '@/components/QuizFunnel'
 import Reveal from '@/components/Reveal'
+import Testimonials from '@/components/Testimonials'
 import { LogoFull } from '@/components/Logo'
 import {
   SectionHeading, FeatureCard, Steps, FAQ, CtaBand, TrustBar, Check,
@@ -151,12 +152,43 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div
-              id="start"
-              className="animate-scale-in scroll-mt-24 rounded-2xl animate-glow-ring"
-              style={{ animationDelay: '.25s' }}
-            >
-              <QuizFunnel source="home-hero" />
+            <div id="start" className="relative scroll-mt-24">
+              {/* Trust badges pinned to the card edges so they read as
+                  attached chrome without ever covering form content. Hidden
+                  on small screens and from assistive tech. */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-4 left-6 z-20 hidden animate-bob items-center gap-2 rounded-full border border-navy-100 bg-white px-4 py-2 text-[12.5px] font-extrabold text-navy-800 shadow-lift sm:flex"
+              >
+                <span className="flex h-5 w-5 items-center justify-center rounded-md bg-grass-100 text-grass-600">
+                  <IconBadge />
+                </span>
+                Licensed agent
+              </span>
+
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-4 right-6 z-20 hidden animate-bob items-center gap-2 rounded-full border border-navy-100 bg-white px-4 py-2 text-[12.5px] font-extrabold text-navy-800 shadow-lift sm:flex"
+                style={{ animationDelay: '1.4s' }}
+              >
+                <span className="flex h-5 w-5 items-center justify-center rounded-md bg-teal-100 text-teal-600">
+                  <IconWallet />
+                </span>
+                $0 cost to you
+              </span>
+
+              {/* soft halo behind the card */}
+              <span
+                aria-hidden="true"
+                className="blob absolute -inset-6 -z-10 animate-float bg-teal-400/25"
+              />
+
+              <div
+                className="animate-scale-in rounded-2xl animate-glow-ring"
+                style={{ animationDelay: '.25s' }}
+              >
+                <QuizFunnel source="home-hero" />
+              </div>
 
               <div className="mt-4 flex items-start gap-3 rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 flex-shrink-0 text-grass-300" aria-hidden="true">
@@ -394,6 +426,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── Testimonials ─────────────────────────────────── */}
+      <Testimonials />
 
       {/* ── FAQ ──────────────────────────────────────────── */}
       <section className="bg-wash py-20">

@@ -144,6 +144,18 @@ When mapping to GHL, carry each consent flag across as a tag or custom field. A 
 `sms-marketing-consent` must never be able to enter an SMS marketing workflow — enforce that in
 the workflow trigger, not only in the copy.
 
+## Testimonials
+
+The section on the homepage renders only when  has
+entries, and it ships empty. Nothing is invented there, and nothing should be:
+endorsements have to be real, substantiable, and published with the person's
+permission, and ACA marketing is an area where that gets checked.
+
+To switch it on, add entries to . For each one you should be able
+to produce written permission and the date and channel it came from. Keep dollar
+amounts, promised savings, eligibility claims and health details out of the
+quotes.  renders underneath automatically.
+
 ## Paid traffic notes
 
 - `/lp/*` pages are `noindex` and excluded from the sitemap so they never compete with the SEO
