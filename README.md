@@ -21,7 +21,7 @@ npm run typecheck  # types only
 
 The previous site was a client-rendered SPA: search engines and social crawlers received an
 empty `<div id="root">` and had to execute a 683 KB JavaScript bundle to see any content. Here
-every public page is **prerendered to static HTML at build time** (47 pages) and first-load JS
+every public page is **prerendered to static HTML at build time** (46 pages) and first-load JS
 is ~103 KB. That is the single biggest SEO and mobile-conversion change.
 
 ## Dependency notes
@@ -60,7 +60,8 @@ components/
   LandingPage.tsx         shared paid-traffic template
   SubsidyCalculator.tsx   educational estimator
   ConsentBlock.tsx        TCPA consent checkboxes
-  Header / Footer / ui
+  Testimonials.tsx        renders only when real quotes exist
+  Logo / Reveal / Header / Footer / ui
 
 lib/
   site.ts        business identity, disclosures, OEP dates
@@ -68,6 +69,7 @@ lib/
   consent.ts     consent disclosure text + version
   subsidy.ts     FPL and applicable-percentage math
   validation.ts  shared client + server validation
+  testimonials.ts real quotes only; empty by default
 ```
 
 ## Before launch — required
@@ -75,10 +77,15 @@ lib/
 These are placeholders in `lib/site.ts` and must come from the agent:
 
 - [ ] **Real state license numbers** (currently "available upon request")
-- [ ] **Full street address** — required by CAN-SPAM and by Meta ad review
-- [ ] **Professional headshot** for `/about` (currently initials placeholder)
-- [ ] **Logo files** to replace the `MHE` wordmark and `public/favicon.svg`
-- [ ] **Legal review of `/privacy-policy` and `/terms`** — both are templates, not legal advice
+- [ ] **Full street address**, required by CAN-SPAM and by Meta ad review
+- [ ] **Professional headshot** for `/about` (currently an initials placeholder)
+- [ ] **Real client testimonials**, see the Testimonials section below
+- [ ] **Legal review of `/privacy-policy` and `/terms`**, both are templates, not legal advice
+- [x] ~~Logo files~~ — the supplied artwork now drives `public/logo-*.png` and every app icon
+
+Logo assets were generated from the original artwork with the white background knocked out
+to transparency, so the mark works on the dark hero and footer. If a native transparent
+source (PNG or SVG) turns up, swapping it in will give cleaner edges than the extraction.
 
 ## Annual verification — do not skip
 
@@ -146,15 +153,15 @@ the workflow trigger, not only in the copy.
 
 ## Testimonials
 
-The section on the homepage renders only when  has
-entries, and it ships empty. Nothing is invented there, and nothing should be:
-endorsements have to be real, substantiable, and published with the person's
-permission, and ACA marketing is an area where that gets checked.
+The section on the homepage renders only when `lib/testimonials.ts` has entries, and it
+ships empty. Nothing is invented there, and nothing should be: endorsements have to be
+real, substantiable, and published with the person's permission, and ACA marketing is an
+area where that gets checked.
 
-To switch it on, add entries to . For each one you should be able
-to produce written permission and the date and channel it came from. Keep dollar
-amounts, promised savings, eligibility claims and health details out of the
-quotes.  renders underneath automatically.
+To switch it on, add entries to `TESTIMONIALS`. For each one you should be able to produce
+written permission and the date and channel it came from. Keep dollar amounts, promised
+savings, eligibility claims and health details out of the quotes.
+`TESTIMONIAL_DISCLOSURE` renders underneath the cards automatically.
 
 ## Paid traffic notes
 
