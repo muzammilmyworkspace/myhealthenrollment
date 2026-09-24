@@ -3,7 +3,7 @@ import LandingPage from '@/components/LandingPage'
 import { OEP, SITE } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: `Open Enrollment ${OEP.planYear} | Compare ACA Marketplace Plans`,
+  title: `Open Enrollment ${OEP.planYear} — ACA Marketplace Plans`,
   description: `Open Enrollment for ${OEP.planYear} coverage runs ${OEP.startLabel} through ${OEP.endLabel}. Compare ACA Marketplace plans with a licensed independent agent.`,
   // Paid-traffic pages stay out of the index so they never compete with the
   // SEO pages for the same terms.

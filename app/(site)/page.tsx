@@ -6,7 +6,9 @@ import { SITE, OEP } from '@/lib/site'
 import { greenStates } from '@/lib/states'
 
 export const metadata: Metadata = {
-  title: 'Affordable Health Insurance Guidance | My Health Enrollment',
+  // Title is deliberately omitted so the root layout's `title.default` is
+  // used as-is. Setting a string here would run it through `title.template`
+  // and append "| My Health Enrollment" a second time.
   description:
     'Compare ACA Marketplace, life, dental, vision and group coverage with a licensed independent agent. Free guidance, no obligation to enroll.',
   alternates: { canonical: '/' },

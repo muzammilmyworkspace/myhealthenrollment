@@ -23,7 +23,9 @@ export async function generateMetadata({
   if (!s) return { title: 'State not found' }
 
   return {
-    title: `${s.name} Health Insurance & ACA Marketplace Plans`,
+    // Kept short so the brand suffix from title.template does not push the
+    // keywords past where search results truncate.
+    title: `${s.name} ACA Health Insurance Plans`,
     description: `Compare ACA Marketplace health insurance in ${s.name} with a licensed independent agent. Open Enrollment runs ${OEP.startLabel} through ${OEP.endLabel}. Free guidance, no obligation.`,
     alternates: { canonical: `/aca/${s.slug}` },
     openGraph: {
