@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { SectionHeading, FAQ, CtaBand, FeatureCard, Steps } from '@/components/ui'
+import { SectionHeading, FAQ, CtaBand, FeatureCard, Steps, PageHero } from '@/components/ui'
 import { SITE } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -51,26 +51,16 @@ const FAQS = [
 export default function EmployerGroupPage() {
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white py-14 lg:py-20">
-        <div className="container-page mx-auto max-w-3xl text-center">
-          <p className="mb-3 text-sm font-bold uppercase tracking-wider text-brand-700">
-            For Employers
-          </p>
-          <h1 className="text-4xl sm:text-5xl">Benefits that help you compete for good people</h1>
-          <p className="mt-5 text-lg leading-relaxed text-slate-600">
-            Health coverage is consistently one of the benefits employees value most. We compare
-            carriers and plan designs, then deliver a custom proposal — free of charge.
-          </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/quote" className="btn-primary px-8">
-              Request a proposal
-            </Link>
-            <a href={SITE.phoneHref} className="btn-ghost px-8">
-              Call {SITE.phone}
-            </a>
-          </div>
+      <PageHero
+        eyebrow="For Employers"
+        title="Benefits that help you compete for good people"
+        sub="Health coverage is consistently one of the benefits employees value most. We compare carriers and plan designs, then deliver a custom proposal — free of charge."
+      >
+        <div className="flex flex-col justify-center gap-3 sm:flex-row">
+          <Link href="/quote" className="btn-accent px-8">Request a proposal</Link>
+          <a href={SITE.phoneHref} className="btn-ghost px-8">Call {SITE.phone}</a>
         </div>
-      </section>
+      </PageHero>
 
       <section className="container-page py-16">
         <SectionHeading
@@ -85,7 +75,7 @@ export default function EmployerGroupPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 py-16">
+      <section className="border-y border-navy-100 bg-wash py-16">
         <div className="container-page">
           <SectionHeading eyebrow="Process" title="From first call to enrollment" />
           <Steps

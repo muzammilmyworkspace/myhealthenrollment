@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { SectionHeading, FAQ, CtaBand, FeatureCard, Callout } from '@/components/ui'
+import { SectionHeading, FAQ, CtaBand, FeatureCard, Callout, PageHero } from '@/components/ui'
 import { SITE } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -51,26 +51,16 @@ const FAQS = [
 export default function LifeInsurancePage() {
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white py-14 lg:py-20">
-        <div className="container-page mx-auto max-w-3xl text-center">
-          <p className="mb-3 text-sm font-bold uppercase tracking-wider text-brand-700">
-            Life &amp; Final Expense
-          </p>
-          <h1 className="text-4xl sm:text-5xl">Protection sized to what your family would need</h1>
-          <p className="mt-5 text-lg leading-relaxed text-slate-600">
-            We compare policies from multiple A-rated carriers. As an independent agency we are
-            not tied to one company, which matters most when health history is a factor.
-          </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/quote" className="btn-primary px-8">
-              Request a quote
-            </Link>
-            <a href={SITE.phoneHref} className="btn-ghost px-8">
-              Call {SITE.phone}
-            </a>
-          </div>
+      <PageHero
+        eyebrow="Life & Final Expense"
+        title="Protection sized to what your family would need"
+        sub="We compare policies from multiple A-rated carriers. As an independent agency we are not tied to one company, which matters most when health history is a factor."
+      >
+        <div className="flex flex-col justify-center gap-3 sm:flex-row">
+          <Link href="/quote" className="btn-accent px-8">Request a quote</Link>
+          <a href={SITE.phoneHref} className="btn-ghost px-8">Call {SITE.phone}</a>
         </div>
-      </section>
+      </PageHero>
 
       <section className="container-page py-16">
         <SectionHeading
@@ -85,7 +75,7 @@ export default function LifeInsurancePage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 py-16">
+      <section className="border-y border-navy-100 bg-wash py-16">
         <div className="container-page mx-auto max-w-3xl">
           <SectionHeading
             eyebrow="How to think about it"

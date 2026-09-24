@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { SectionHeading, FAQ, CtaBand, Callout, Steps, Check } from '@/components/ui'
+import { SectionHeading, FAQ, CtaBand, Callout, Steps, Check, PageHero } from '@/components/ui'
 import { SITE, OEP } from '@/lib/site'
 import { greenStates } from '@/lib/states'
 
@@ -79,31 +79,16 @@ export default function AcaPage() {
 
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white py-14 lg:py-20">
-        <div className="container-page">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-3 text-sm font-bold uppercase tracking-wider text-brand-700">
-              ACA Marketplace
-            </p>
-            <h1 className="text-4xl sm:text-5xl">
-              Health coverage for individuals and families
-            </h1>
-            <p className="mt-5 text-lg leading-relaxed text-slate-600">
-              ACA Marketplace plans cannot turn you down for a pre-existing condition, and many
-              households qualify for savings. A licensed agent can help you compare what is
-              actually available in your ZIP code.
-            </p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/quote" className="btn-primary px-8">
-                See my options
-              </Link>
-              <a href={SITE.phoneHref} className="btn-ghost px-8">
-                Call {SITE.phone}
-              </a>
-            </div>
-          </div>
+      <PageHero
+        eyebrow="ACA Marketplace"
+        title="Health coverage for individuals and families"
+        sub="ACA Marketplace plans cannot turn you down for a pre-existing condition, and many households qualify for savings. A licensed agent can help you compare what is actually available in your ZIP code."
+      >
+        <div className="flex flex-col justify-center gap-3 sm:flex-row">
+          <Link href="/quote" className="btn-accent px-8">See my options</Link>
+          <a href={SITE.phoneHref} className="btn-ghost px-8">Call {SITE.phone}</a>
         </div>
-      </section>
+      </PageHero>
 
       {/* Enrollment timing */}
       <section className="container-page py-16">
@@ -113,12 +98,12 @@ export default function AcaPage() {
           sub="Marketplace enrollment is not open year-round. There are two ways in."
         />
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="card border-brand-200 bg-brand-50">
+          <div className="card border-teal-200 bg-teal-50">
             <h3 className="text-xl">Open Enrollment</h3>
-            <p className="mt-2 text-2xl font-extrabold text-brand-700">
+            <p className="mt-2 text-2xl font-extrabold text-teal-700">
               {OEP.startLabel} – {OEP.endLabel}
             </p>
-            <p className="mt-3 text-[15px] leading-relaxed text-slate-700">
+            <p className="mt-3 text-[15px] leading-relaxed text-navy-700">
               During this window anyone eligible can enroll or change plans for {OEP.planYear}{' '}
               coverage — no qualifying event needed. Enrolling earlier in the window usually means
               coverage starts sooner.
@@ -131,13 +116,13 @@ export default function AcaPage() {
 
           <div className="card">
             <h3 className="text-xl">Special Enrollment Period</h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-slate-600">
+            <p className="mt-2 text-[15px] leading-relaxed text-navy-500">
               Outside Open Enrollment, a qualifying life event can open a limited window —
               typically 60 days from the event:
             </p>
             <ul className="mt-4 space-y-2">
               {SEP_EVENTS.map((e) => (
-                <li key={e} className="flex gap-2 text-[15px] text-slate-700">
+                <li key={e} className="flex gap-2 text-[15px] text-navy-700">
                   <Check />
                   <span>{e}</span>
                 </li>
@@ -152,30 +137,30 @@ export default function AcaPage() {
       </section>
 
       {/* Metal tiers */}
-      <section className="border-y border-slate-200 bg-slate-50 py-16">
+      <section className="border-y border-navy-100 bg-wash py-16">
         <div className="container-page">
           <SectionHeading
             eyebrow="Plan tiers"
             title="Bronze, Silver, Gold and Platinum"
             sub="Tiers describe how you and the plan split costs — not the quality of care. Every tier covers the same essential health benefits."
           />
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+          <div className="overflow-hidden rounded-2xl border border-navy-100 bg-white">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-slate-200 bg-slate-50">
+              <thead className="border-b border-navy-100 bg-navy-50">
                 <tr>
-                  <th scope="col" className="px-5 py-3.5 font-bold text-slate-900">Tier</th>
-                  <th scope="col" className="px-5 py-3.5 font-bold text-slate-900">Monthly premium</th>
-                  <th scope="col" className="hidden px-5 py-3.5 font-bold text-slate-900 sm:table-cell">When you use care</th>
-                  <th scope="col" className="px-5 py-3.5 font-bold text-slate-900">Often a fit if…</th>
+                  <th scope="col" className="px-5 py-3.5 font-bold text-navy-900">Tier</th>
+                  <th scope="col" className="px-5 py-3.5 font-bold text-navy-900">Monthly premium</th>
+                  <th scope="col" className="hidden px-5 py-3.5 font-bold text-navy-900 sm:table-cell">When you use care</th>
+                  <th scope="col" className="px-5 py-3.5 font-bold text-navy-900">Often a fit if…</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-navy-50">
                 {TIERS.map((t) => (
                   <tr key={t.tier}>
-                    <th scope="row" className="px-5 py-4 font-bold text-brand-700">{t.tier}</th>
-                    <td className="px-5 py-4 text-slate-600">{t.premium}</td>
-                    <td className="hidden px-5 py-4 text-slate-600 sm:table-cell">{t.share}</td>
-                    <td className="px-5 py-4 text-slate-600">{t.fit}</td>
+                    <th scope="row" className="px-5 py-4 font-bold text-teal-700">{t.tier}</th>
+                    <td className="px-5 py-4 text-navy-500">{t.premium}</td>
+                    <td className="hidden px-5 py-4 text-navy-500 sm:table-cell">{t.share}</td>
+                    <td className="px-5 py-4 text-navy-500">{t.fit}</td>
                   </tr>
                 ))}
               </tbody>
@@ -199,7 +184,7 @@ export default function AcaPage() {
           <div className="space-y-5">
             <div className="card">
               <h3 className="text-lg">Premium Tax Credit</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-slate-600">
+              <p className="mt-2 text-[15px] leading-relaxed text-navy-500">
                 Lowers your monthly premium. The ACA caps what your household is expected to
                 contribute toward the benchmark Silver plan as a percentage of income; the credit
                 covers the rest. It can be applied in advance each month, so you never see the
@@ -208,7 +193,7 @@ export default function AcaPage() {
             </div>
             <div className="card">
               <h3 className="text-lg">Cost-Sharing Reductions</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-slate-600">
+              <p className="mt-2 text-[15px] leading-relaxed text-navy-500">
                 Lowers your deductible, copays and out-of-pocket maximum — but{' '}
                 <strong>only on Silver plans</strong>, and generally only below 250% of the
                 Federal Poverty Level. This is why a Bronze plan that looks cheaper each month can
@@ -235,7 +220,7 @@ export default function AcaPage() {
       </section>
 
       {/* Process */}
-      <section className="border-y border-slate-200 bg-slate-50 py-16">
+      <section className="border-y border-navy-100 bg-wash py-16">
         <div className="container-page">
           <SectionHeading eyebrow="Our process" title="What working with us looks like" />
           <Steps
@@ -269,7 +254,7 @@ export default function AcaPage() {
             <Link
               key={s.abbr}
               href={`/aca/${s.slug}`}
-              className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-center text-sm font-semibold text-slate-700 transition-colors hover:border-brand-400 hover:text-brand-700"
+              className="rounded-xl border border-navy-100 bg-white px-4 py-3 text-center text-sm font-semibold text-navy-700 transition-colors hover:border-teal-400 hover:text-teal-700"
             >
               {s.name}
             </Link>

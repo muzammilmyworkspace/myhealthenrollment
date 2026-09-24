@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { SectionHeading, FAQ, CtaBand, Callout, Check } from '@/components/ui'
+import { SectionHeading, FAQ, CtaBand, Callout, Check, PageHero } from '@/components/ui'
 import { SITE } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -48,38 +48,28 @@ const FAQS = [
 export default function DentalVisionPage() {
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white py-14 lg:py-20">
-        <div className="container-page mx-auto max-w-3xl text-center">
-          <p className="mb-3 text-sm font-bold uppercase tracking-wider text-brand-700">
-            Dental &amp; Vision
-          </p>
-          <h1 className="text-4xl sm:text-5xl">The coverage most health plans leave out</h1>
-          <p className="mt-5 text-lg leading-relaxed text-slate-600">
-            Adult dental and vision are usually sold separately from health insurance. Standalone
-            plans are available in most states, with or without a health plan.
-          </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/quote" className="btn-primary px-8">
-              Compare plans
-            </Link>
-            <a href={SITE.phoneHref} className="btn-ghost px-8">
-              Call {SITE.phone}
-            </a>
-          </div>
+      <PageHero
+        eyebrow="Dental & Vision"
+        title="The coverage most health plans leave out"
+        sub="Adult dental and vision are usually sold separately from health insurance. Standalone plans are available in most states, with or without a health plan."
+      >
+        <div className="flex flex-col justify-center gap-3 sm:flex-row">
+          <Link href="/quote" className="btn-accent px-8">Compare plans</Link>
+          <a href={SITE.phoneHref} className="btn-ghost px-8">Call {SITE.phone}</a>
         </div>
-      </section>
+      </PageHero>
 
       <section className="container-page py-16">
         <div className="grid gap-6 md:grid-cols-2">
           <div className="card">
             <h2 className="text-2xl">Dental plans</h2>
-            <p className="mt-2 text-[15px] leading-relaxed text-slate-600">
+            <p className="mt-2 text-[15px] leading-relaxed text-navy-500">
               Coverage tiers generally follow preventive, basic and major categories, with the
               plan paying a larger share of preventive care.
             </p>
             <ul className="mt-5 space-y-2.5">
               {DENTAL.map((d) => (
-                <li key={d} className="flex gap-2.5 text-[15px] text-slate-700">
+                <li key={d} className="flex gap-2.5 text-[15px] text-navy-700">
                   <Check /> {d}
                 </li>
               ))}
@@ -88,13 +78,13 @@ export default function DentalVisionPage() {
 
           <div className="card">
             <h2 className="text-2xl">Vision plans</h2>
-            <p className="mt-2 text-[15px] leading-relaxed text-slate-600">
+            <p className="mt-2 text-[15px] leading-relaxed text-navy-500">
               Vision coverage is usually straightforward: an annual exam plus an allowance toward
               glasses or contacts.
             </p>
             <ul className="mt-5 space-y-2.5">
               {VISION.map((v) => (
-                <li key={v} className="flex gap-2.5 text-[15px] text-slate-700">
+                <li key={v} className="flex gap-2.5 text-[15px] text-navy-700">
                   <Check /> {v}
                 </li>
               ))}
@@ -111,7 +101,7 @@ export default function DentalVisionPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 py-16">
+      <section className="border-y border-navy-100 bg-wash py-16">
         <div className="container-page">
           <SectionHeading eyebrow="Questions" title="Dental &amp; vision FAQ" />
           <FAQ items={FAQS} />

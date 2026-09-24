@@ -1,14 +1,17 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import QuizFunnel from '@/components/QuizFunnel'
-import { SectionHeading, FeatureCard, Steps, FAQ, CtaBand, TrustBar, Check } from '@/components/ui'
+import Reveal from '@/components/Reveal'
+import { LogoMark } from '@/components/Logo'
+import {
+  SectionHeading, FeatureCard, Steps, FAQ, CtaBand, TrustBar, Check,
+  Blobs, WaveDivider, IconShield, IconHeart, IconSmile, IconBuilding,
+} from '@/components/ui'
 import { SITE, OEP } from '@/lib/site'
 import { greenStates } from '@/lib/states'
 
 export const metadata: Metadata = {
-  // Title is deliberately omitted so the root layout's `title.default` is
-  // used as-is. Setting a string here would run it through `title.template`
-  // and append "| My Health Enrollment" a second time.
+  // Title omitted on purpose — see the note in the root layout's metadata.
   description:
     'Compare ACA Marketplace, life, dental, vision and group coverage with a licensed independent agent. Free guidance, no obligation to enroll.',
   alternates: { canonical: '/' },
@@ -21,11 +24,11 @@ const FAQS = [
   },
   {
     q: 'When can I enroll in an ACA Marketplace plan?',
-    a: `Open Enrollment for ${OEP.planYear} coverage runs from ${OEP.startLabel} through ${OEP.endLabel}. Outside that window you can enroll if you have a qualifying life event — such as losing job-based coverage, getting married, having a baby, or moving — which opens a Special Enrollment Period. Dates and eligibility rules are set by the Marketplace and can change, so an agent will confirm what applies to you.`,
+    a: `Open Enrollment for ${OEP.planYear} coverage runs from ${OEP.startLabel} through ${OEP.endLabel}. Outside that window you can enroll if you have a qualifying life event — such as losing job-based coverage, getting married, having a baby, or moving — which opens a Special Enrollment Period. Dates and eligibility rules are set by the Marketplace and can change.`,
   },
   {
     q: 'Will I qualify for savings?',
-    a: 'Many households qualify for a Premium Tax Credit that lowers the monthly cost, and some also qualify for cost-sharing reductions on Silver plans. Eligibility depends on your income, household size, location, and access to other coverage. Only the Marketplace can determine your actual eligibility based on your full application — we can help you understand the process and review what is available.',
+    a: 'Many households qualify for a Premium Tax Credit that lowers the monthly cost, and some also qualify for cost-sharing reductions on Silver plans. Eligibility depends on your income, household size, location, and access to other coverage. Only the Marketplace can determine your actual eligibility based on your full application.',
   },
   {
     q: 'Do you sell my information?',
@@ -47,103 +50,183 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white">
-        <div className="container-page grid gap-12 py-14 lg:grid-cols-2 lg:gap-16 lg:py-20">
+      <section className="relative overflow-hidden bg-brand-deep">
+        <div className="absolute inset-0 bg-grid-light" aria-hidden="true" />
+        <Blobs variant="dark" />
+
+        <div className="container-page relative grid gap-12 py-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:py-20">
           <div className="flex flex-col justify-center">
-            <p className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold text-brand-700 shadow-sm ring-1 ring-brand-100">
-              <span className="h-2 w-2 rounded-full bg-accent-500" aria-hidden="true" />
-              Open Enrollment for {OEP.planYear}: {OEP.startLabel} – {OEP.endLabel}
+            <p
+              className="inline-flex w-fit animate-fade-up items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-grass-400" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-grass-400" />
+              </span>
+              Open Enrollment {OEP.planYear}: {OEP.startLabel} – {OEP.endLabel}
             </p>
 
-            <h1 className="mt-6 text-4xl leading-[1.1] sm:text-5xl lg:text-[3.4rem]">
-              Health coverage options,
-              <span className="text-brand-700"> explained by a licensed agent</span>
+            <h1
+              className="mt-7 animate-fade-up text-[2.6rem] leading-[1.06] text-white sm:text-5xl lg:text-[3.6rem]"
+              style={{ animationDelay: '.09s' }}
+            >
+              Health coverage,
+              <br />
+              <span className="text-gradient">explained by a real agent</span>
             </h1>
 
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
+            <p
+              className="mt-6 max-w-xl animate-fade-up text-lg leading-relaxed text-navy-100"
+              style={{ animationDelay: '.18s' }}
+            >
               Compare ACA Marketplace plans for individuals and families across{' '}
               {SITE.agent.stateCount} states. We handle the paperwork and the comparison — you
               decide. Our help costs nothing and there is no obligation to enroll.
             </p>
 
-            <ul className="mt-7 space-y-3">
+            <ul className="stagger mt-8 space-y-3.5">
               {[
-                'Licensed independent agent — not a call center',
+                'A licensed independent agent — not a call centre',
                 'Enrollment through a CMS-certified secure platform',
                 'We never promise a price before checking your state',
               ].map((t) => (
-                <li key={t} className="flex gap-2.5 text-[15px] font-medium text-slate-700">
-                  <Check /> {t}
+                <li key={t} className="flex animate-fade-up gap-3 text-[15px] font-medium text-white/90">
+                  <Check tone="white" /> {t}
                 </li>
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="#start" className="btn-primary px-8">
-                See My Options
+            <div
+              className="mt-9 flex animate-fade-up flex-col gap-3 sm:flex-row"
+              style={{ animationDelay: '.42s' }}
+            >
+              <Link href="#start" className="btn-accent px-9 text-lg">
+                See My Options →
               </Link>
-              <a href={SITE.phoneHref} className="btn-ghost px-8">
+              <a href={SITE.phoneHref} className="btn-glass px-8">
                 Call {SITE.phone}
               </a>
             </div>
 
-            <p className="mt-5 text-xs leading-relaxed text-slate-500">
+            <p
+              className="mt-7 max-w-xl animate-fade-up text-xs leading-relaxed text-navy-300"
+              style={{ animationDelay: '.5s' }}
+            >
               My Health Enrollment is a private insurance agency. We are not affiliated with,
               endorsed by, or acting on behalf of any government agency.
             </p>
           </div>
 
-          <div id="start" className="scroll-mt-20">
+          <div id="start" className="animate-scale-in scroll-mt-24" style={{ animationDelay: '.25s' }}>
             <QuizFunnel source="home-hero" />
           </div>
         </div>
+
+        <WaveDivider from="fill-white" />
       </section>
 
       {/* ── Trust bar ────────────────────────────────────── */}
-      <section className="border-b border-slate-200 bg-white py-6">
+      <section className="border-b border-navy-100 bg-white py-7">
         <div className="container-page">
           <TrustBar />
         </div>
       </section>
 
+      {/* ── Brand / logo moment ──────────────────────────── */}
+      <section className="relative overflow-hidden bg-white py-20">
+        <div className="absolute inset-0 bg-grid mask-fade" aria-hidden="true" />
+        <div className="container-page relative">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal className="order-2 lg:order-1">
+              <span className="chip">Why us</span>
+              <h2 className="mt-4 text-3xl sm:text-4xl">
+                An open door, not a{' '}
+                <span className="underline-brush">sales pitch</span>
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-navy-500">
+                Our mark is a doorway inside a heart, with a path leading up to it. That is the
+                job as we see it: show you the way in, walk it with you, and let you decide what
+                is right for your family.
+              </p>
+              <div className="mt-8 grid gap-5 sm:grid-cols-2">
+                {[
+                  { t: 'Independent', d: 'Not owned by any carrier, so we can compare instead of push.' },
+                  { t: 'Licensed', d: `${SITE.agent.name} personally handles your case in ${SITE.agent.stateCount} states.` },
+                  { t: 'Transparent', d: 'No promised numbers before your state and ZIP are checked.' },
+                  { t: 'Secure', d: 'Applications only inside a CMS-certified platform.' },
+                ].map((x) => (
+                  <div key={x.t} className="border-l-2 border-teal-200 pl-4">
+                    <p className="font-extrabold text-navy-800">{x.t}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-navy-500">{x.d}</p>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal delay={140} className="order-1 lg:order-2">
+              <div className="relative mx-auto flex max-w-sm items-center justify-center">
+                {/* concentric rings behind the mark */}
+                <span className="absolute h-[19rem] w-[19rem] rounded-full border border-teal-100" aria-hidden="true" />
+                <span className="absolute h-[14.5rem] w-[14.5rem] rounded-full border border-grass-100" aria-hidden="true" />
+                <span className="blob absolute h-56 w-56 bg-teal-200/40 animate-float" aria-hidden="true" />
+                <div className="relative animate-bob rounded-[2rem] bg-white p-8 shadow-lift ring-1 ring-navy-100">
+                  <LogoMark className="h-40 w-40" animated />
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ── Coverage types ───────────────────────────────── */}
-      <section className="container-page py-16 lg:py-20">
-        <SectionHeading
-          eyebrow="What we help with"
-          title="Coverage for individuals, families and employers"
-          sub="Choose the path that fits your situation. A licensed agent reviews the details with you before anything is decided."
-        />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <FeatureCard
-            title="ACA Marketplace Plans"
-            body="Individual and family health coverage through the Marketplace, including guidance on premium tax credits and cost-sharing reductions."
-            href="/aca-health-insurance"
-            cta="Explore ACA plans"
+      <section className="relative bg-wash py-20">
+        <div className="container-page">
+          <SectionHeading
+            eyebrow="What we help with"
+            title="Coverage for individuals, families and employers"
+            sub="Choose the path that fits your situation. A licensed agent reviews the details with you before anything is decided."
           />
-          <FeatureCard
-            title="Life & Final Expense"
-            body="Term, whole and final expense policies from multiple A-rated carriers — coverage sized to what your family would actually need."
-            href="/life-insurance"
-            cta="Explore life insurance"
-          />
-          <FeatureCard
-            title="Dental & Vision"
-            body="Standalone dental and vision plans, available in most states without buying a health plan. Most health plans do not include adult dental or vision."
-            href="/dental-vision"
-            cta="Explore dental & vision"
-          />
-          <FeatureCard
-            title="Employer Group Benefits"
-            body="Group health, dental, vision, life and disability for businesses of 1–500+ employees, with custom proposals at no cost."
-            href="/employer-group"
-            cta="Explore group benefits"
-          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <FeatureCard
+              delay={0}
+              icon={<IconShield />}
+              title="ACA Marketplace Plans"
+              body="Individual and family health coverage through the Marketplace, including guidance on premium tax credits and cost-sharing reductions."
+              href="/aca-health-insurance"
+              cta="Explore ACA plans"
+            />
+            <FeatureCard
+              delay={90}
+              icon={<IconHeart />}
+              title="Life & Final Expense"
+              body="Term, whole and final expense policies from multiple A-rated carriers — coverage sized to what your family would actually need."
+              href="/life-insurance"
+              cta="Explore life insurance"
+            />
+            <FeatureCard
+              delay={180}
+              icon={<IconSmile />}
+              title="Dental & Vision"
+              body="Standalone dental and vision plans, available in most states without buying a health plan. Most health plans leave adult dental and vision out."
+              href="/dental-vision"
+              cta="Explore dental & vision"
+            />
+            <FeatureCard
+              delay={270}
+              icon={<IconBuilding />}
+              title="Employer Group Benefits"
+              body="Group health, dental, vision, life and disability for businesses of 1–500+ employees, with custom proposals at no cost."
+              href="/employer-group"
+              cta="Explore group benefits"
+            />
+          </div>
         </div>
       </section>
 
       {/* ── How it works ─────────────────────────────────── */}
-      <section className="border-y border-slate-200 bg-slate-50 py-16 lg:py-20">
-        <div className="container-page">
+      <section className="relative overflow-hidden bg-white py-20">
+        <div className="absolute inset-0 bg-dots mask-fade opacity-50" aria-hidden="true" />
+        <div className="container-page relative">
           <SectionHeading
             eyebrow="How it works"
             title="Three steps, no surprises"
@@ -168,65 +251,84 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Savings estimator teaser ─────────────────────── */}
-      <section className="container-page py-16 lg:py-20">
-        <div className="grid items-center gap-10 rounded-2xl border border-brand-100 bg-brand-50 p-8 lg:grid-cols-2 lg:p-12">
-          <div>
-            <SectionHeading
-              eyebrow="Free tool"
-              center={false}
-              title="See how ACA savings are calculated"
-              sub="Enter your household size and estimated income to see the share of income the ACA expects you to contribute toward a benchmark plan. No personal details required."
-            />
-            <Link href="/subsidy-calculator" className="btn-primary px-8">
-              Open the estimator
-            </Link>
-            <p className="legal mt-4 max-w-md">
-              Educational only. Actual eligibility and amounts are determined by the Marketplace
-              based on your full application.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <p className="text-sm font-semibold text-slate-500">Example — household of 3</p>
-            <p className="mt-4 text-sm text-slate-600">Estimated annual income</p>
-            <p className="text-2xl font-bold text-slate-900">$45,000</p>
-            <div className="my-4 h-px bg-slate-200" />
-            <p className="text-sm text-slate-600">Expected monthly contribution toward a benchmark Silver plan</p>
-            <p className="text-3xl font-extrabold text-brand-700">capped by income</p>
-            <p className="legal mt-4">
-              Illustration only. Your result depends on your state, household size, income and the
-              plans available in your ZIP code.
-            </p>
+      {/* ── Savings estimator ────────────────────────────── */}
+      <section className="relative overflow-hidden bg-wash py-20">
+        <div className="container-page relative">
+          <div className="grid items-center gap-10 overflow-hidden rounded-3xl border border-teal-100 bg-white p-8 shadow-card lg:grid-cols-2 lg:p-12">
+            <Reveal>
+              <span className="chip">Free tool</span>
+              <h2 className="mt-4 text-3xl sm:text-4xl">See how ACA savings are calculated</h2>
+              <p className="mt-4 text-lg leading-relaxed text-navy-500">
+                Enter your household size and estimated income to see the share of income the ACA
+                expects you to contribute toward a benchmark plan. No personal details required.
+              </p>
+              <Link href="/subsidy-calculator" className="btn-teal mt-7 px-8">
+                Open the estimator →
+              </Link>
+              <p className="legal mt-5 max-w-md">
+                Educational only. Actual eligibility and amounts are determined by the Marketplace
+                based on your full application.
+              </p>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="relative rounded-2xl bg-brand-deep p-7 text-white shadow-lift">
+                <div className="absolute inset-0 rounded-2xl bg-grid-light" aria-hidden="true" />
+                <div className="relative">
+                  <p className="text-sm font-bold uppercase tracking-wider text-teal-300">
+                    Example — household of 3
+                  </p>
+                  <p className="mt-5 text-sm text-navy-200">Estimated annual income</p>
+                  <p className="text-3xl font-extrabold">$45,000</p>
+                  <div className="my-5 h-px bg-white/15" />
+                  <p className="text-sm text-navy-200">
+                    Expected monthly contribution toward a benchmark Silver plan
+                  </p>
+                  <p className="mt-1 text-4xl font-extrabold text-grass-300">capped by income</p>
+                  <p className="mt-5 text-xs leading-relaxed text-navy-300">
+                    Illustration only. Your result depends on your state, household size, income
+                    and the plans available in your ZIP code.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* ── States ───────────────────────────────────────── */}
-      <section className="border-y border-slate-200 bg-slate-50 py-16 lg:py-20">
-        <div className="container-page">
+      <section className="relative overflow-hidden bg-white py-20">
+        <div className="absolute inset-0 bg-grid mask-fade" aria-hidden="true" />
+        <div className="container-page relative">
           <SectionHeading
             eyebrow="Where we work"
             title="Marketplace guidance across these states"
             sub="Select your state to see local enrollment details. Availability is always confirmed during your consultation."
           />
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {states.map((s) => (
-              <Link
-                key={s.abbr}
-                href={`/aca/${s.slug}`}
-                className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-center text-sm font-semibold text-slate-700 transition-colors hover:border-brand-400 hover:text-brand-700"
-              >
-                {s.name}
-              </Link>
+            {states.map((s, i) => (
+              <Reveal key={s.abbr} delay={Math.min(i * 28, 400)}>
+                <Link
+                  href={`/aca/${s.slug}`}
+                  className="group flex items-center justify-between gap-2 rounded-xl border border-navy-100 bg-white px-4 py-3 text-sm font-bold text-navy-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-teal-300 hover:text-teal-700 hover:shadow-card"
+                >
+                  {s.name}
+                  <span className="text-teal-400 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true">
+                    →
+                  </span>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────── */}
-      <section className="container-page py-16 lg:py-20">
-        <SectionHeading eyebrow="Questions" title="Frequently asked" />
-        <FAQ items={FAQS} />
+      <section className="bg-wash py-20">
+        <div className="container-page">
+          <SectionHeading eyebrow="Questions" title="Frequently asked" />
+          <FAQ items={FAQS} />
+        </div>
       </section>
 
       <CtaBand />

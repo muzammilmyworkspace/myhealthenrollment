@@ -19,42 +19,42 @@ export default function ConsentBlock({
   const toggle = (id: ConsentId) => onChange({ ...value, [id]: !value[id] })
 
   return (
-    <fieldset className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-      <legend className="px-1 text-sm font-semibold text-slate-700">
-        How may we contact you? <span className="font-normal text-slate-500">(all optional)</span>
+    <fieldset className="rounded-xl border border-navy-100 bg-navy-50 p-4">
+      <legend className="px-1 text-sm font-semibold text-navy-700">
+        How may we contact you? <span className="font-normal text-navy-400">(all optional)</span>
       </legend>
 
       <div className="mt-2 space-y-2.5">
         {CONSENT_OPTIONS.map((opt) => (
-          <div key={opt.id} className="rounded-lg bg-white p-3 ring-1 ring-slate-200">
+          <div key={opt.id} className="rounded-lg bg-white p-3 ring-1 ring-navy-100">
             <label className="flex cursor-pointer items-start gap-3">
               <input
                 type="checkbox"
                 checked={value[opt.id]}
                 onChange={() => toggle(opt.id)}
-                className="mt-0.5 h-5 w-5 flex-shrink-0 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                className="mt-0.5 h-5 w-5 flex-shrink-0 rounded border-navy-200 text-teal-600 focus:ring-teal-500"
               />
-              <span className="text-sm font-medium leading-snug text-slate-700">{opt.label}</span>
+              <span className="text-sm font-medium leading-snug text-navy-700">{opt.label}</span>
             </label>
 
             <button
               type="button"
               onClick={() => setExpanded(expanded === opt.id ? null : opt.id)}
-              className="mt-1.5 pl-8 text-xs font-medium text-slate-500 underline underline-offset-2 hover:text-slate-700"
+              className="mt-1.5 pl-8 text-xs font-medium text-navy-400 underline underline-offset-2 hover:text-navy-700"
               aria-expanded={expanded === opt.id}
             >
               {expanded === opt.id ? 'Hide full disclosure' : 'Read full disclosure'}
             </button>
 
             {expanded === opt.id && (
-              <p className="mt-2 pl-8 text-xs leading-relaxed text-slate-500">{opt.detail}</p>
+              <p className="mt-2 pl-8 text-xs leading-relaxed text-navy-400">{opt.detail}</p>
             )}
           </div>
         ))}
       </div>
 
       <p className="legal mt-3">{CONSENT_FOOTER}</p>
-      <p className="legal mt-1.5 text-slate-400">Disclosure version {DISCLOSURE_VERSION}</p>
+      <p className="legal mt-1.5 text-navy-300">Disclosure version {DISCLOSURE_VERSION}</p>
     </fieldset>
   )
 }

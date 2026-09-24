@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import QuizFunnel from '@/components/QuizFunnel'
-import { TrustBar, FAQ, Callout } from '@/components/ui'
+import { TrustBar, FAQ, Callout, PageHero } from '@/components/ui'
 import { SITE, OEP } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -13,20 +13,13 @@ export const metadata: Metadata = {
 export default function QuotePage() {
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white py-12 lg:py-16">
-        <div className="container-page">
-          <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-3xl sm:text-4xl">See what is available in your state</h1>
-            <p className="mt-4 text-lg leading-relaxed text-slate-600">
-              Five short questions. No Social Security number, no payment details, and no
-              obligation to enroll. A licensed agent reviews verified options with you.
-            </p>
-          </div>
-          <div className="mt-8">
-            <TrustBar />
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Free · No obligation"
+        title="See what is available in your state"
+        sub="Five short questions. No Social Security number, no payment details, and no obligation to enroll. A licensed agent reviews verified options with you."
+      >
+        <TrustBar />
+      </PageHero>
 
       <section className="container-page py-12 lg:py-16">
         <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-5">
@@ -45,17 +38,17 @@ export default function QuotePage() {
 
             <div className="card">
               <h2 className="text-lg">What happens next</h2>
-              <ol className="mt-4 space-y-3 text-[15px] leading-relaxed text-slate-600">
+              <ol className="mt-4 space-y-3 text-[15px] leading-relaxed text-navy-500">
                 <li>
-                  <strong className="text-slate-900">1.</strong> You see your state routing status
+                  <strong className="text-navy-900">1.</strong> You see your state routing status
                   immediately after submitting.
                 </li>
                 <li>
-                  <strong className="text-slate-900">2.</strong> A licensed agent contacts you
+                  <strong className="text-navy-900">2.</strong> A licensed agent contacts you
                   through the method you chose, usually within one business day.
                 </li>
                 <li>
-                  <strong className="text-slate-900">3.</strong> If you decide to move forward,
+                  <strong className="text-navy-900">3.</strong> If you decide to move forward,
                   enrollment happens in a secure CMS-certified platform — never over email or text.
                 </li>
               </ol>
@@ -63,7 +56,7 @@ export default function QuotePage() {
 
             <div className="card">
               <h2 className="text-lg">Enrollment timing</h2>
-              <p className="mt-3 text-[15px] leading-relaxed text-slate-600">
+              <p className="mt-3 text-[15px] leading-relaxed text-navy-500">
                 Open Enrollment for {OEP.planYear} coverage runs {OEP.startLabel} through{' '}
                 {OEP.endLabel}. Outside that window, a qualifying life event may open a Special
                 Enrollment Period. Rules are set by the Marketplace and can change.

@@ -18,7 +18,7 @@ export default function TermsPage() {
     <section className="container-page py-14 lg:py-20">
       <div className="mx-auto max-w-3xl">
         <h1 className="text-4xl">Terms of Service</h1>
-        <p className="mt-3 text-sm text-slate-500">Last updated: {LAST_UPDATED}</p>
+        <p className="mt-3 text-sm text-navy-400">Last updated: {LAST_UPDATED}</p>
 
         <div className="mt-8">
           <Callout tone="warn" title="Not a government website">
@@ -122,7 +122,7 @@ export default function TermsPage() {
           </p>
         </div>
 
-        <div className="mt-10 border-t border-slate-200 pt-8">
+        <div className="mt-10 border-t border-navy-100 pt-8">
           <p className="legal">{DISCLOSURES.solicitation}</p>
         </div>
       </div>

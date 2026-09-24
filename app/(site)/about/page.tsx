@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { SectionHeading, CtaBand, Callout, Check } from '@/components/ui'
+import { SectionHeading, CtaBand, Callout, Check, PageHero } from '@/components/ui'
 import { SITE, DISCLOSURES } from '@/lib/site'
 import { STATES } from '@/lib/states'
 
@@ -25,32 +25,26 @@ export default function AboutPage() {
 
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white py-14 lg:py-20">
-        <div className="container-page mx-auto max-w-3xl text-center">
-          <p className="mb-3 text-sm font-bold uppercase tracking-wider text-brand-700">About us</p>
-          <h1 className="text-4xl sm:text-5xl">A licensed agent, not a call center</h1>
-          <p className="mt-5 text-lg leading-relaxed text-slate-600">
-            {SITE.name} is the doing-business-as brand of {SITE.legalEntity}, an independent
-            insurance agency. Independent means we are not employed by any single carrier — so we
-            can compare options rather than sell one company&apos;s products.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About us"
+        title="A licensed agent, not a call centre"
+        sub="My Health Enrollment is the doing-business-as brand of JINSUNG INTERNATIONAL LLC, an independent insurance agency. Independent means we are not employed by any single carrier — so we can compare options rather than sell one company's products."
+      />
 
       <section className="container-page py-16">
         <div className="mx-auto max-w-3xl">
           <div className="card sm:p-8">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
               <div
-                className="flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-brand-100 text-3xl font-extrabold text-brand-700"
+                className="flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-teal-100 text-3xl font-extrabold text-teal-700"
                 aria-hidden="true"
               >
                 ZM
               </div>
               <div>
                 <h2 className="text-2xl">{SITE.agent.name}</h2>
-                <p className="mt-1 font-semibold text-brand-700">{SITE.agent.title}</p>
-                <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
+                <p className="mt-1 font-semibold text-teal-700">{SITE.agent.title}</p>
+                <p className="mt-4 text-[15px] leading-relaxed text-navy-500">
                   Licensed in {SITE.agent.stateCount} states, helping individuals, families and
                   employers compare ACA Marketplace, life, dental, vision and group coverage.
                   Enrollment is completed through {SITE.enrollmentPartner}, a CMS-certified
@@ -71,7 +65,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 py-16">
+      <section className="border-y border-navy-100 bg-navy-50 py-16">
         <div className="container-page mx-auto max-w-3xl">
           <SectionHeading
             eyebrow="How we work"
@@ -81,7 +75,7 @@ export default function AboutPage() {
           />
           <ul className="space-y-3">
             {COMMITMENTS.map((c) => (
-              <li key={c} className="flex gap-3 text-[15px] leading-relaxed text-slate-700">
+              <li key={c} className="flex gap-3 text-[15px] leading-relaxed text-navy-700">
                 <Check /> {c}
               </li>
             ))}
@@ -97,25 +91,25 @@ export default function AboutPage() {
             title="States we serve"
             sub="Marketplace availability differs by state. Some states run their own exchange, which changes how an agent may assist you."
           />
-          <div className="overflow-hidden rounded-2xl border border-slate-200">
+          <div className="overflow-hidden rounded-2xl border border-navy-100">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-slate-200 bg-slate-50">
+              <thead className="border-b border-navy-100 bg-navy-50">
                 <tr>
-                  <th scope="col" className="px-5 py-3 font-bold text-slate-900">State</th>
-                  <th scope="col" className="px-5 py-3 font-bold text-slate-900">Marketplace</th>
-                  <th scope="col" className="px-5 py-3 font-bold text-slate-900">Enrollment path</th>
+                  <th scope="col" className="px-5 py-3 font-bold text-navy-900">State</th>
+                  <th scope="col" className="px-5 py-3 font-bold text-navy-900">Marketplace</th>
+                  <th scope="col" className="px-5 py-3 font-bold text-navy-900">Enrollment path</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 bg-white">
+              <tbody className="divide-y divide-navy-50 bg-white">
                 {served.map((s) => (
                   <tr key={s.abbr}>
-                    <th scope="row" className="px-5 py-3 font-semibold text-slate-800">
-                      <Link href={`/aca/${s.slug}`} className="hover:text-brand-700">{s.name}</Link>
+                    <th scope="row" className="px-5 py-3 font-semibold text-navy-800">
+                      <Link href={`/aca/${s.slug}`} className="hover:text-teal-700">{s.name}</Link>
                     </th>
-                    <td className="px-5 py-3 text-slate-600">
+                    <td className="px-5 py-3 text-navy-500">
                       {s.exchange === 'federal' ? 'HealthCare.gov' : s.exchangeName ?? 'State exchange'}
                     </td>
-                    <td className="px-5 py-3 text-slate-600">
+                    <td className="px-5 py-3 text-navy-500">
                       {s.tier === 'GREEN' ? 'Secure agent-assisted enrollment' : 'Agent review required first'}
                     </td>
                   </tr>
@@ -133,23 +127,23 @@ export default function AboutPage() {
           <div className="card">
             <dl className="grid gap-5 sm:grid-cols-3">
               <div>
-                <dt className="text-sm font-semibold text-slate-500">Phone</dt>
+                <dt className="text-sm font-semibold text-navy-400">Phone</dt>
                 <dd className="mt-1">
-                  <a href={SITE.phoneHref} className="text-lg font-bold text-brand-700">{SITE.phone}</a>
+                  <a href={SITE.phoneHref} className="text-lg font-bold text-teal-700">{SITE.phone}</a>
                 </dd>
               </div>
               <div>
-                <dt className="text-sm font-semibold text-slate-500">Email</dt>
+                <dt className="text-sm font-semibold text-navy-400">Email</dt>
                 <dd className="mt-1">
-                  <a href={SITE.emailHref} className="font-medium text-brand-700 break-all">{SITE.email}</a>
+                  <a href={SITE.emailHref} className="font-medium text-teal-700 break-all">{SITE.email}</a>
                 </dd>
               </div>
               <div>
-                <dt className="text-sm font-semibold text-slate-500">Legal entity</dt>
-                <dd className="mt-1 font-medium text-slate-800">
+                <dt className="text-sm font-semibold text-navy-400">Legal entity</dt>
+                <dd className="mt-1 font-medium text-navy-800">
                   {SITE.legalEntity}
                   <br />
-                  <span className="text-sm text-slate-600">
+                  <span className="text-sm text-navy-500">
                     {SITE.address.line1}, {SITE.address.region}
                   </span>
                 </dd>

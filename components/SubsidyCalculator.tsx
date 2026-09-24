@@ -56,7 +56,7 @@ export default function SubsidyCalculator() {
       <div className="lg:col-span-2">
         <form onSubmit={calculate} className="card sm:p-7" noValidate>
           <h2 className="text-xl">Your household</h2>
-          <p className="mt-1.5 text-sm text-slate-600">
+          <p className="mt-1.5 text-sm text-navy-500">
             No name, email or phone number needed.
           </p>
 
@@ -94,7 +94,7 @@ export default function SubsidyCalculator() {
             <div>
               <label htmlFor="calc-income" className="label">Estimated annual household income</label>
               <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">$</span>
+                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-navy-400">$</span>
                 <input
                   id="calc-income"
                   inputMode="numeric"
@@ -133,9 +133,9 @@ export default function SubsidyCalculator() {
 
 function EmptyPanel() {
   return (
-    <div className="flex h-full flex-col justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 p-8 text-center">
-      <h3 className="text-lg text-slate-700">Your estimate appears here</h3>
-      <p className="mx-auto mt-2 max-w-sm text-[15px] leading-relaxed text-slate-500">
+    <div className="flex h-full flex-col justify-center rounded-2xl border-2 border-dashed border-navy-100 bg-navy-50 p-8 text-center">
+      <h3 className="text-lg text-navy-700">Your estimate appears here</h3>
+      <p className="mx-auto mt-2 max-w-sm text-[15px] leading-relaxed text-navy-400">
         Fill in your state, household size and estimated income to see how the ACA calculates
         what a household is expected to contribute.
       </p>
@@ -150,24 +150,24 @@ function ResultPanel({ result }: { result: SubsidyResult }) {
     <div className="space-y-5">
       <div
         className={`rounded-2xl border-2 p-6 sm:p-8 ${
-          positive ? 'border-accent-500 bg-accent-50' : 'border-brand-300 bg-brand-50'
+          positive ? 'border-grass-500 bg-grass-50' : 'border-teal-300 bg-teal-50'
         }`}
       >
-        <p className="text-sm font-bold uppercase tracking-wide text-slate-600">
+        <p className="text-sm font-bold uppercase tracking-wide text-navy-500">
           Estimated result
         </p>
         <h3 className="mt-2 text-2xl">{result.headline}</h3>
 
         {positive && result.monthlyContributionCap !== null && (
-          <div className="mt-6 rounded-xl border border-slate-200 bg-white p-5">
-            <p className="text-sm text-slate-600">
+          <div className="mt-6 rounded-xl border border-navy-100 bg-white p-5">
+            <p className="text-sm text-navy-500">
               Expected monthly contribution toward a benchmark Silver plan
             </p>
-            <p className="mt-1 text-4xl font-extrabold text-accent-700">
+            <p className="mt-1 text-4xl font-extrabold text-grass-700">
               about {formatUSD(result.monthlyContributionCap)}
-              <span className="text-lg font-semibold text-slate-500">/mo</span>
+              <span className="text-lg font-semibold text-navy-400">/mo</span>
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+            <p className="mt-3 text-sm leading-relaxed text-navy-500">
               Under ACA rules a household at {result.fplPercent}% of the Federal Poverty Level is
               expected to contribute roughly {result.applicablePercent}% of income toward the
               benchmark plan. A premium tax credit covers the rest of that benchmark premium.
@@ -176,7 +176,7 @@ function ResultPanel({ result }: { result: SubsidyResult }) {
           </div>
         )}
 
-        <p className="mt-5 text-[15px] leading-relaxed text-slate-700">{result.detail}</p>
+        <p className="mt-5 text-[15px] leading-relaxed text-navy-700">{result.detail}</p>
 
         {result.csrEligible && (
           <div className="mt-5">
@@ -188,14 +188,14 @@ function ResultPanel({ result }: { result: SubsidyResult }) {
           </div>
         )}
 
-        <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-slate-200 pt-5 text-sm">
+        <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-navy-100 pt-5 text-sm">
           <div>
-            <dt className="text-slate-500">Your income as % of FPL</dt>
-            <dd className="mt-0.5 text-lg font-bold text-slate-900">{result.fplPercent}%</dd>
+            <dt className="text-navy-400">Your income as % of FPL</dt>
+            <dd className="mt-0.5 text-lg font-bold text-navy-900">{result.fplPercent}%</dd>
           </div>
           <div>
-            <dt className="text-slate-500">100% FPL for your household</dt>
-            <dd className="mt-0.5 text-lg font-bold text-slate-900">{formatUSD(result.fplAmount)}</dd>
+            <dt className="text-navy-400">100% FPL for your household</dt>
+            <dd className="mt-0.5 text-lg font-bold text-navy-900">{formatUSD(result.fplAmount)}</dd>
           </div>
         </dl>
       </div>
@@ -207,9 +207,9 @@ function ResultPanel({ result }: { result: SubsidyResult }) {
         set annually and can change. A licensed agent can review verified options with you.
       </Callout>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-6">
+      <div className="rounded-2xl border border-navy-100 bg-white p-6">
         <h3 className="text-lg">Want the real numbers for your ZIP code?</h3>
-        <p className="mt-2 text-[15px] leading-relaxed text-slate-600">
+        <p className="mt-2 text-[15px] leading-relaxed text-navy-500">
           A licensed agent can show you the actual plans, carriers and prices available where you
           live. Free, and no obligation to enroll.
         </p>

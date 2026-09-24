@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import QuizFunnel from '@/components/QuizFunnel'
-import { SectionHeading, FAQ, CtaBand, Callout, TrustBar, Check } from '@/components/ui'
+import { SectionHeading, FAQ, CtaBand, Callout, TrustBar, Check, Blobs } from '@/components/ui'
 import { SITE, OEP, DISCLOSURES } from '@/lib/site'
 import { STATES, getStateBySlug, greenStates } from '@/lib/states'
 
@@ -80,14 +80,16 @@ export default async function StatePage({ params }: { params: Promise<Params> })
 
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white py-12 lg:py-16">
-        <div className="container-page">
-          <nav aria-label="Breadcrumb" className="mb-6 text-sm text-slate-500">
-            <Link href="/" className="hover:text-brand-700">Home</Link>
+      <section className="relative overflow-hidden border-b border-navy-100 bg-wash py-12 lg:py-16">
+        <div className="absolute inset-0 bg-dots mask-fade opacity-60" aria-hidden="true" />
+        <Blobs />
+        <div className="container-page relative">
+          <nav aria-label="Breadcrumb" className="mb-6 text-sm text-navy-400">
+            <Link href="/" className="hover:text-teal-700">Home</Link>
             <span className="mx-2" aria-hidden="true">/</span>
-            <Link href="/aca-health-insurance" className="hover:text-brand-700">ACA Plans</Link>
+            <Link href="/aca-health-insurance" className="hover:text-teal-700">ACA Plans</Link>
             <span className="mx-2" aria-hidden="true">/</span>
-            <span className="font-medium text-slate-700">{s.name}</span>
+            <span className="font-medium text-navy-700">{s.name}</span>
           </nav>
 
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
@@ -95,29 +97,29 @@ export default async function StatePage({ params }: { params: Promise<Params> })
               <h1 className="text-4xl leading-tight sm:text-5xl">
                 {s.name} health insurance &amp; ACA Marketplace plans
               </h1>
-              <p className="mt-5 text-lg leading-relaxed text-slate-600">
+              <p className="mt-5 text-lg leading-relaxed text-navy-500">
                 Compare Marketplace coverage available in {s.name} with a licensed independent
                 agent. We check which plans and carriers are actually offered in your ZIP code —
                 free, and with no obligation to enroll.
               </p>
 
               <ul className="mt-7 space-y-3">
-                <li className="flex gap-2.5 text-[15px] font-medium text-slate-700">
+                <li className="flex gap-2.5 text-[15px] font-medium text-navy-700">
                   <Check /> Applications go through {applyVia}
                 </li>
-                <li className="flex gap-2.5 text-[15px] font-medium text-slate-700">
+                <li className="flex gap-2.5 text-[15px] font-medium text-navy-700">
                   <Check />{' '}
                   {s.medicaidExpanded
                     ? `${s.name} has expanded Medicaid`
                     : `${s.name} has not expanded Medicaid`}
                 </li>
-                <li className="flex gap-2.5 text-[15px] font-medium text-slate-700">
+                <li className="flex gap-2.5 text-[15px] font-medium text-navy-700">
                   <Check /> Open Enrollment: {OEP.startLabel} – {OEP.endLabel}
                 </li>
               </ul>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link href="#start" className="btn-primary px-8">See my options</Link>
+                <Link href="#start" className="btn-accent px-8">See my options</Link>
                 <a href={SITE.phoneHref} className="btn-ghost px-8">Call {SITE.phone}</a>
               </div>
             </div>
@@ -129,7 +131,7 @@ export default async function StatePage({ params }: { params: Promise<Params> })
         </div>
       </section>
 
-      <section className="border-b border-slate-200 bg-white py-6">
+      <section className="border-b border-navy-100 bg-white py-6">
         <div className="container-page"><TrustBar /></div>
       </section>
 
@@ -227,7 +229,7 @@ export default async function StatePage({ params }: { params: Promise<Params> })
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-slate-50 py-16">
+      <section className="border-y border-navy-100 bg-wash py-16">
         <div className="container-page">
           <SectionHeading eyebrow="Questions" title={`${s.name} ACA FAQ`} />
           <FAQ items={faqs} />
@@ -241,7 +243,7 @@ export default async function StatePage({ params }: { params: Promise<Params> })
             <Link
               key={o.abbr}
               href={`/aca/${o.slug}`}
-              className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-center text-sm font-semibold text-slate-700 transition-colors hover:border-brand-400 hover:text-brand-700"
+              className="rounded-xl border border-navy-100 bg-white px-4 py-3 text-center text-sm font-semibold text-navy-700 transition-colors hover:border-teal-400 hover:text-teal-700"
             >
               {o.name}
             </Link>

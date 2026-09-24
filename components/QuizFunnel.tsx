@@ -149,7 +149,7 @@ export default function QuizFunnel({ source = 'quiz' }: { source?: string }) {
   if (result) return <Result result={result} refId={refId} />
 
   return (
-    <div className="card sm:p-8">
+    <div className="card relative overflow-hidden sm:p-8">
       <Progress step={step} />
 
       <form onSubmit={submit} noValidate>
@@ -207,8 +207,8 @@ export default function QuizFunnel({ source = 'quiz' }: { source?: string }) {
                   key={n} type="button" onClick={() => set('householdSize', n)}
                   className={`rounded-xl border-2 py-4 text-lg font-bold transition-colors ${
                     a.householdSize === n
-                      ? 'border-brand-600 bg-brand-50 text-brand-700'
-                      : 'border-slate-200 bg-white text-slate-700 hover:border-brand-300'
+                      ? 'border-teal-500 bg-teal-50 text-teal-700 shadow-card'
+                      : 'border-navy-100 bg-white text-navy-700 hover:border-teal-300 hover:bg-teal-50/40'
                   }`}
                   aria-pressed={a.householdSize === n}
                 >
@@ -228,14 +228,14 @@ export default function QuizFunnel({ source = 'quiz' }: { source?: string }) {
                   key={s.value} type="button" onClick={() => set('situation', s.value)}
                   className={`flex w-full items-center justify-between gap-3 rounded-xl border-2 px-4 py-4 text-left transition-colors ${
                     a.situation === s.value
-                      ? 'border-brand-600 bg-brand-50'
-                      : 'border-slate-200 bg-white hover:border-brand-300'
+                      ? 'border-teal-500 bg-teal-50 shadow-card'
+                      : 'border-navy-100 bg-white hover:border-teal-300 hover:bg-teal-50/40'
                   }`}
                   aria-pressed={a.situation === s.value}
                 >
-                  <span className="text-[15px] font-semibold text-slate-800">{s.label}</span>
+                  <span className="text-[15px] font-bold text-navy-800">{s.label}</span>
                   {s.hint && (
-                    <span className="hidden flex-shrink-0 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 sm:inline">
+                    <span className="hidden flex-shrink-0 rounded-full bg-grass-100 px-2.5 py-1 text-xs font-bold text-grass-700 sm:inline">
                       {s.hint}
                     </span>
                   )}
@@ -257,8 +257,8 @@ export default function QuizFunnel({ source = 'quiz' }: { source?: string }) {
                   key={b.value} type="button" onClick={() => set('incomeBand', b.value)}
                   className={`w-full rounded-xl border-2 px-4 py-3.5 text-left text-[15px] font-semibold transition-colors ${
                     a.incomeBand === b.value
-                      ? 'border-brand-600 bg-brand-50 text-brand-700'
-                      : 'border-slate-200 bg-white text-slate-700 hover:border-brand-300'
+                      ? 'border-teal-500 bg-teal-50 text-teal-700 shadow-card'
+                      : 'border-navy-100 bg-white text-navy-700 hover:border-teal-300 hover:bg-teal-50/40'
                   }`}
                   aria-pressed={a.incomeBand === b.value}
                 >
@@ -290,7 +290,7 @@ export default function QuizFunnel({ source = 'quiz' }: { source?: string }) {
             </div>
             <div className="mt-4">
               <label htmlFor="notes" className="label">
-                Anything else the agent should know? <span className="font-normal text-slate-500">(optional)</span>
+                Anything else the agent should know? <span className="font-normal text-navy-400">(optional)</span>
               </label>
               <textarea
                 id="notes" name="notes" rows={3} className="field resize-none" value={a.notes}
@@ -308,7 +308,7 @@ export default function QuizFunnel({ source = 'quiz' }: { source?: string }) {
             </div>
 
             {errors.form && (
-              <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-3.5 text-sm font-medium text-red-700">
+              <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-3.5 text-sm font-semibold text-red-700">
                 {errors.form}
               </div>
             )}
@@ -350,12 +350,12 @@ function Progress({ step }: { step: number }) {
   return (
     <div className="mb-7">
       <div className="mb-2 flex items-center justify-between text-sm">
-        <span className="font-semibold text-slate-700">Step {step} of {TOTAL_STEPS}</span>
-        <span className="text-slate-500">About {Math.max(1, TOTAL_STEPS - step)} min left</span>
+        <span className="font-extrabold text-navy-800">Step {step} of {TOTAL_STEPS}</span>
+        <span className="text-navy-400">About {Math.max(1, TOTAL_STEPS - step)} min left</span>
       </div>
-      <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+      <div className="h-2 overflow-hidden rounded-full bg-navy-100">
         <div
-          className="h-full rounded-full bg-brand-600 transition-all duration-300"
+          className="h-full rounded-full bg-gradient-to-r from-teal-500 to-grass-500 transition-all duration-500"
           style={{ width: `${pct}%` }}
           role="progressbar"
           aria-valuenow={pct}
@@ -372,7 +372,7 @@ function Step({ title, sub, children }: { title: string; sub?: string; children:
   return (
     <div>
       <h2 className="text-xl sm:text-2xl">{title}</h2>
-      {sub && <p className="mt-2 text-[15px] leading-relaxed text-slate-600">{sub}</p>}
+      {sub && <p className="mt-2 text-[15px] leading-relaxed text-navy-500">{sub}</p>}
       <div className="mt-6">{children}</div>
     </div>
   )
@@ -400,25 +400,25 @@ function Field({
 
 function Result({ result, refId }: { result: RouteResult; refId: string | null }) {
   const tone =
-    result.status === 'GREEN' ? 'border-accent-500 bg-accent-50'
+    result.status === 'GREEN' ? 'border-grass-400 bg-grass-50'
     : result.status === 'RED' ? 'border-amber-400 bg-amber-50'
-    : 'border-brand-400 bg-brand-50'
+    : 'border-teal-400 bg-teal-50'
 
   return (
     <div className={`rounded-2xl border-2 ${tone} p-6 sm:p-8`}>
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-accent-600" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-grass-600" aria-hidden="true">
           <path d="M20 6 9 17l-5-5" />
         </svg>
       </div>
 
       <h2 className="text-2xl">{result.headline}</h2>
-      <p className="mt-3 text-[15px] leading-relaxed text-slate-700">{result.body}</p>
+      <p className="mt-3 text-[15px] leading-relaxed text-navy-600">{result.body}</p>
 
       {result.canEnrollOnline && (
-        <div className="mt-6 rounded-xl border border-slate-200 bg-white p-5">
-          <p className="text-sm font-semibold text-slate-900">Continue to secure enrollment</p>
-          <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+        <div className="mt-6 rounded-xl border border-navy-100 bg-white p-5">
+          <p className="text-sm font-extrabold text-navy-900">Continue to secure enrollment</p>
+          <p className="mt-1.5 text-sm leading-relaxed text-navy-500">
             {SITE.enrollmentPartner} is a CMS-certified enrollment platform. Plan comparison and
             selection happen inside that secure environment — never in this form.
           </p>
@@ -433,8 +433,8 @@ function Result({ result, refId }: { result: RouteResult; refId: string | null }
       )}
 
       {result.status === 'RED' && result.state?.exchangeUrl && (
-        <div className="mt-6 rounded-xl border border-slate-200 bg-white p-5">
-          <p className="text-sm font-semibold text-slate-900">
+        <div className="mt-6 rounded-xl border border-navy-100 bg-white p-5">
+          <p className="text-sm font-extrabold text-navy-900">
             {result.state.name}&apos;s official marketplace
           </p>
           <a

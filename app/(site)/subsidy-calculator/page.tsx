@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import SubsidyCalculator from '@/components/SubsidyCalculator'
-import { CtaBand, Callout } from '@/components/ui'
+import { CtaBand, Callout, PageHero } from '@/components/ui'
 
 export const metadata: Metadata = {
   title: 'ACA Savings Estimator',
@@ -12,15 +12,11 @@ export const metadata: Metadata = {
 export default function SubsidyCalculatorPage() {
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white py-12 lg:py-16">
-        <div className="container-page mx-auto max-w-3xl text-center">
-          <h1 className="text-3xl sm:text-4xl">ACA savings estimator</h1>
-          <p className="mt-4 text-lg leading-relaxed text-slate-600">
-            See how the Affordable Care Act calculates what a household is expected to contribute
-            toward health coverage. No name, email or phone number required.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Free tool · No sign-up"
+        title="ACA savings estimator"
+        sub="See how the Affordable Care Act calculates what a household is expected to contribute toward health coverage. No name, email or phone number required."
+      />
 
       <section className="container-page py-12 lg:py-16">
         <SubsidyCalculator />

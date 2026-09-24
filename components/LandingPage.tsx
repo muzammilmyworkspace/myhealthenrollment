@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import QuizFunnel from './QuizFunnel'
-import { FAQ, Check } from './ui'
+import Logo from './Logo'
+import Reveal from './Reveal'
+import { FAQ, Check, Blobs, WaveDivider } from './ui'
 import { SITE, DISCLOSURES } from '@/lib/site'
 
 /**
@@ -42,67 +44,64 @@ export default function LandingPage({
   return (
     <div className="min-h-screen bg-white">
       {/* Minimal header — logo + phone only, no nav */}
-      <header className="border-b border-slate-200 bg-white">
+      <header className="border-b border-navy-100 bg-white">
         <div className="container-page flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-600 text-sm font-extrabold text-white">
-              MHE
-            </span>
-            <span className="text-[15px] font-bold leading-tight text-slate-900">
-              My Health
-              <br className="hidden sm:block" /> Enrollment
-            </span>
+          <Link href="/" aria-label="My Health Enrollment — home">
+            <Logo />
           </Link>
           <a
             href={SITE.phoneHref}
-            className="rounded-xl bg-accent-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-accent-700 sm:px-5"
+            className="btn-accent px-4 py-2.5 text-sm sm:px-5"
           >
             Call {SITE.phone}
           </a>
         </div>
       </header>
 
-      <section className="bg-gradient-to-b from-brand-50 to-white py-10 lg:py-16">
-        <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16">
+      <section className="relative overflow-hidden bg-brand-deep py-10 lg:py-16">
+        <div className="absolute inset-0 bg-grid-light" aria-hidden="true" />
+        <Blobs variant="dark" />
+        <div className="container-page relative grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col justify-center">
-            <p className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold text-brand-700 shadow-sm ring-1 ring-brand-100">
-              <span className="h-2 w-2 rounded-full bg-accent-500" aria-hidden="true" />
+            <p className="inline-flex w-fit animate-fade-up items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm">
+              <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-grass-400" /><span className="relative inline-flex h-2 w-2 rounded-full bg-grass-400" /></span>
               {eyebrow}
             </p>
 
-            <h1 className="mt-5 text-3xl leading-[1.12] sm:text-4xl lg:text-5xl">{headline}</h1>
-            <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate-600">{subhead}</p>
+            <h1 className="mt-5 animate-fade-up text-3xl leading-[1.12] text-white sm:text-4xl lg:text-5xl" style={{ animationDelay: '.08s' }}>{headline}</h1>
+            <p className="mt-4 max-w-xl animate-fade-up text-lg leading-relaxed text-navy-100" style={{ animationDelay: '.16s' }}>{subhead}</p>
 
-            <ul className="mt-7 space-y-3">
+            <ul className="stagger mt-7 space-y-3">
               {bullets.map((b) => (
-                <li key={b} className="flex gap-2.5 text-[15px] font-medium text-slate-700">
-                  <Check /> {b}
+                <li key={b} className="flex animate-fade-up gap-2.5 text-[15px] font-medium text-white/90">
+                  <Check tone="white" /> {b}
                 </li>
               ))}
             </ul>
 
-            <a href="#form" className="btn-primary mt-8 px-8 lg:hidden">
+            <a href="#form" className="btn-accent mt-8 px-8 lg:hidden">
               See my options →
             </a>
 
-            <p className="mt-6 text-xs leading-relaxed text-slate-500">
+            <p className="mt-6 max-w-xl text-xs leading-relaxed text-navy-300">
               {DISCLOSURES.notGovernment}
             </p>
           </div>
 
-          <div id="form" className="scroll-mt-6">
+          <div id="form" className="animate-scale-in scroll-mt-6" style={{ animationDelay: '.2s' }}>
             <QuizFunnel source={source} />
             {note && (
-              <p className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm leading-relaxed text-slate-600">
+              <p className="mt-4 rounded-xl border border-white/15 bg-white/10 p-4 text-sm leading-relaxed text-navy-100 backdrop-blur-sm">
                 {note}
               </p>
             )}
           </div>
         </div>
+        <WaveDivider from="fill-white" />
       </section>
 
       {/* Trust */}
-      <section className="border-y border-slate-200 bg-white py-8">
+      <section className="border-b border-navy-100 bg-white py-8">
         <div className="container-page">
           <div className="grid gap-6 sm:grid-cols-3">
             {[
@@ -120,8 +119,8 @@ export default function LandingPage({
               },
             ].map((item) => (
               <div key={item.t} className="text-center sm:text-left">
-                <p className="font-bold text-slate-900">{item.t}</p>
-                <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.d}</p>
+                <p className="font-bold text-navy-900">{item.t}</p>
+                <p className="mt-1 text-sm leading-relaxed text-navy-500">{item.d}</p>
               </div>
             ))}
           </div>
@@ -129,27 +128,27 @@ export default function LandingPage({
       </section>
 
       {/* How it works */}
-      <section className="container-page py-14">
-        <h2 className="mb-8 text-center text-2xl sm:text-3xl">How it works</h2>
+      <section className="container-page py-16">
+        <h2 className="mb-10 text-center text-2xl sm:text-3xl">How it works</h2>
         <ol className="grid gap-6 md:grid-cols-3">
           {[
             { t: 'Answer a few questions', d: 'ZIP code, household size, your situation. Takes about two minutes.' },
             { t: 'We check your state', d: 'You see immediately whether a licensed agent is available where you live.' },
             { t: 'Review real options', d: 'A licensed agent walks through verified plans for your area. You decide — or you do not.' },
           ].map((s, i) => (
-            <li key={s.t} className="card">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 text-base font-bold text-white">
+            <li key={s.t} className="card-hover text-center">
+              <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-navy-700 to-teal-600 text-base font-extrabold text-white shadow-glow">
                 {i + 1}
               </span>
               <h3 className="mt-4 text-lg">{s.t}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-slate-600">{s.d}</p>
+              <p className="mt-2 text-[15px] leading-relaxed text-navy-500">{s.d}</p>
             </li>
           ))}
         </ol>
       </section>
 
       {/* FAQ */}
-      <section className="border-t border-slate-200 bg-slate-50 py-14">
+      <section className="border-t border-navy-100 bg-wash py-16">
         <div className="container-page">
           <h2 className="mb-8 text-center text-2xl sm:text-3xl">Common questions</h2>
           <FAQ items={faqs} />
@@ -157,19 +156,20 @@ export default function LandingPage({
       </section>
 
       {/* Final CTA */}
-      <section className="bg-brand-700 py-14">
-        <div className="container-page text-center">
+      <section className="relative overflow-hidden bg-brand-deep py-16">
+        <div className="absolute inset-0 bg-grid-light" aria-hidden="true" />
+        <div className="container-page relative text-center">
           <h2 className="text-2xl text-white sm:text-3xl">Ready to see your options?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-brand-100">
+          <p className="mx-auto mt-3 max-w-xl text-navy-100">
             Free, and no obligation to enroll.
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href="#form" className="btn bg-white px-8 text-brand-700 hover:bg-brand-50">
+            <a href="#form" className="btn-accent px-8">
               See my options
             </a>
             <a
               href={SITE.phoneHref}
-              className="btn border-2 border-white/60 px-8 text-white hover:bg-white/10"
+              className="btn-glass px-8"
             >
               Call {SITE.phone}
             </a>
@@ -178,15 +178,15 @@ export default function LandingPage({
       </section>
 
       {/* Compliance footer — ad reviewers look for this */}
-      <footer className="border-t border-slate-200 bg-slate-900 py-10 text-slate-400">
+      <footer className="border-t border-navy-100 bg-navy-900 py-10 text-navy-300">
         <div className="container-page space-y-3">
           <p className="text-sm font-bold text-white">
             {SITE.legalEntity} DBA {SITE.name}
           </p>
-          <p className="legal !text-slate-400">{DISCLOSURES.notGovernment}</p>
-          <p className="legal !text-slate-400">{DISCLOSURES.solicitation}</p>
-          <p className="legal !text-slate-400">{DISCLOSURES.noGuarantee}</p>
-          <p className="legal !text-slate-400">
+          <p className="legal !text-navy-300">{DISCLOSURES.notGovernment}</p>
+          <p className="legal !text-navy-300">{DISCLOSURES.solicitation}</p>
+          <p className="legal !text-navy-300">{DISCLOSURES.noGuarantee}</p>
+          <p className="legal !text-navy-300">
             {DISCLOSURES.agentLicensing} {SITE.licenseNote}
           </p>
           <div className="flex flex-wrap gap-x-5 gap-y-2 pt-3 text-xs">
@@ -195,7 +195,7 @@ export default function LandingPage({
             <Link href="/about" className="hover:text-white">About &amp; Licensing</Link>
             <a href={SITE.emailHref} className="hover:text-white">{SITE.email}</a>
           </div>
-          <p className="pt-2 text-xs text-slate-500">
+          <p className="pt-2 text-xs text-navy-400">
             © {new Date().getFullYear()} {SITE.legalEntity}. All rights reserved.
           </p>
         </div>
