@@ -1,7 +1,7 @@
 # My Health Enrollment — Website
 
 Marketing and lead-generation site for **My Health Enrollment** (JINSUNG INTERNATIONAL LLC),
-a licensed independent insurance agency. Built with Next.js 15 (App Router), TypeScript and
+a licensed independent insurance agency. Built with Next.js 16 (App Router), TypeScript and
 Tailwind CSS.
 
 ## Quick start
@@ -22,7 +22,19 @@ npm run typecheck  # types only
 The previous site was a client-rendered SPA: search engines and social crawlers received an
 empty `<div id="root">` and had to execute a 683 KB JavaScript bundle to see any content. Here
 every public page is **prerendered to static HTML at build time** (47 pages) and first-load JS
-is ~118 KB. That is the single biggest SEO and mobile-conversion change.
+is ~103 KB. That is the single biggest SEO and mobile-conversion change.
+
+## Dependency notes
+
+**TypeScript is pinned to `^5.9` on purpose.** TypeScript 7 fails to resolve the `@/*` path
+aliases and the `globals.css` side-effect import under this config, which breaks the build.
+Do not bump it to `latest` without re-running `npm run build`.
+
+Keep `npm audit` at zero. This project was briefly on `next@15.1.6`, which is affected by
+[CVE-2025-66478](https://nextjs.org/blog/CVE-2025-66478) — a CVSS 10.0 remote code execution
+flaw in the React Server Components protocol that was actively exploited. There is no
+workaround for that class of issue; upgrading is the only fix. Check `npm audit` before every
+deploy.
 
 ## Structure
 
