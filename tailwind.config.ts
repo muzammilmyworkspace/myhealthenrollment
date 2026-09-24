@@ -66,6 +66,20 @@ const config: Config = {
           '0%,100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-7px)' },
         },
+        aurora: {
+          '0%,100%': { backgroundPosition: '0% 50%, 100% 50%, 50% 100%' },
+          '50%': { backgroundPosition: '100% 50%, 0% 50%, 50% 0%' },
+        },
+        'grid-drift': { to: { backgroundPosition: '54px 54px' } },
+        sweep: {
+          '0%': { transform: 'translateX(-120%) skewX(-18deg)' },
+          '60%,100%': { transform: 'translateX(320%) skewX(-18deg)' },
+        },
+        'glow-ring': {
+          '0%,100%': { boxShadow: '0 0 0 1px rgba(122,206,81,.25), 0 24px 60px -18px rgba(23,160,176,.55)' },
+          '50%': { boxShadow: '0 0 0 1px rgba(122,206,81,.55), 0 30px 80px -18px rgba(90,187,51,.55)' },
+        },
+        'spin-slow': { to: { transform: 'rotate(360deg)' } },
       },
       animation: {
         'fade-up': 'fade-up .7s cubic-bezier(.22,1,.36,1) both',
@@ -76,6 +90,11 @@ const config: Config = {
         'pulse-ring': 'pulse-ring 2.8s cubic-bezier(.24,.6,.35,1) infinite',
         shimmer: 'shimmer 3.5s linear infinite',
         bob: 'bob 4s ease-in-out infinite',
+        aurora: 'aurora 22s ease-in-out infinite',
+        'grid-drift': 'grid-drift 28s linear infinite',
+        sweep: 'sweep 5.5s ease-in-out infinite',
+        'glow-ring': 'glow-ring 5s ease-in-out infinite',
+        'spin-slow': 'spin-slow 26s linear infinite',
       },
     },
   },

@@ -6,6 +6,7 @@ import { LogoFull } from '@/components/Logo'
 import {
   SectionHeading, FeatureCard, Steps, FAQ, CtaBand, TrustBar, Check,
   Blobs, WaveDivider, IconShield, IconHeart, IconSmile, IconBuilding,
+  IconBadge, IconWallet, IconLock, IconCompare,
 } from '@/components/ui'
 import { SITE, OEP } from '@/lib/site'
 import { greenStates } from '@/lib/states'
@@ -44,6 +45,30 @@ const FAQS = [
   },
 ]
 
+/** The reasons to pick a licensed independent agent over a call centre. */
+const USPS = [
+  {
+    title: `Licensed in ${SITE.agent.stateCount} states`,
+    body: 'One named agent handles your case, not a rotating call centre.',
+    icon: <IconBadge />,
+  },
+  {
+    title: 'Costs you nothing',
+    body: 'Agents are paid by the carrier. Your premium is the same either way.',
+    icon: <IconWallet />,
+  },
+  {
+    title: 'CMS-certified enrollment',
+    body: `Applications complete inside ${SITE.enrollmentPartner}, never by text or email.`,
+    icon: <IconLock />,
+  },
+  {
+    title: 'No obligation, no pressure',
+    body: 'We never promise a price before checking your state and ZIP.',
+    icon: <IconCompare />,
+  },
+]
+
 export default function HomePage() {
   const states = greenStates()
 
@@ -51,90 +76,122 @@ export default function HomePage() {
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-brand-deep">
-        <div className="absolute inset-0 bg-grid-light" aria-hidden="true" />
+        {/* layered decoration: drifting grid, shifting colour field, blobs,
+            and one slow light sweep. All of it stops under
+            prefers-reduced-motion via the global rule in globals.css. */}
+        <div className="absolute inset-0 bg-grid-light animate-grid-drift" aria-hidden="true" />
+        <div className="absolute inset-0 bg-aurora" aria-hidden="true" />
         <Blobs variant="dark" />
+        <div className="sweep-layer" aria-hidden="true" />
 
-        <div className="container-page relative grid gap-12 py-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:py-20">
-          <div className="flex flex-col justify-center">
-            <p
-              className="inline-flex w-fit animate-fade-up items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-grass-400" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-grass-400" />
-              </span>
-              Open Enrollment {OEP.planYear}: {OEP.startLabel} to {OEP.endLabel}
-            </p>
+        <div className="container-page relative py-12 lg:py-16">
+          <div className="grid items-start gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-14">
+            <div className="flex flex-col justify-center">
+              <p className="inline-flex w-fit animate-fade-up items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-grass-400" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-grass-400" />
+                </span>
+                Open Enrollment {OEP.planYear}: {OEP.startLabel} to {OEP.endLabel}
+              </p>
 
-            <h1
-              className="mt-7 animate-fade-up text-[2.6rem] leading-[1.06] text-white sm:text-5xl lg:text-[3.6rem]"
-              style={{ animationDelay: '.09s' }}
-            >
-              Health coverage,
-              <br />
-              <span className="text-gradient">explained by a real agent</span>
-            </h1>
+              <h1
+                className="mt-6 animate-fade-up text-[2.5rem] leading-[1.06] text-white sm:text-5xl lg:text-[3.4rem]"
+                style={{ animationDelay: '.09s' }}
+              >
+                Health coverage,
+                <br />
+                <span className="text-gradient">explained by a real agent</span>
+              </h1>
 
-            <p
-              className="mt-6 max-w-xl animate-fade-up text-lg leading-relaxed text-navy-100"
-              style={{ animationDelay: '.18s' }}
-            >
-              Compare ACA Marketplace plans for individuals and families across{' '}
-              {SITE.agent.stateCount} states. We handle the paperwork and the comparison. You
-              decide. Our help costs nothing and there is no obligation to enroll.
-            </p>
+              <p
+                className="mt-5 max-w-xl animate-fade-up text-lg leading-relaxed text-navy-100"
+                style={{ animationDelay: '.18s' }}
+              >
+                Compare ACA Marketplace plans for individuals and families across{' '}
+                {SITE.agent.stateCount} states. We handle the paperwork and the comparison.
+                You decide.
+              </p>
 
-            <ul className="stagger mt-8 space-y-3.5">
-              {[
-                'A licensed independent agent, not a call centre',
-                'Enrollment through a CMS-certified secure platform',
-                'We never promise a price before checking your state',
-              ].map((t) => (
-                <li key={t} className="flex animate-fade-up gap-3 text-[15px] font-medium text-white/90">
-                  <Check tone="white" /> {t}
-                </li>
-              ))}
-            </ul>
+              {/* USPs — the reasons to choose this agency over a call centre */}
+              <ul className="stagger mt-7 grid items-stretch gap-3 sm:grid-cols-2">
+                {USPS.map((u) => (
+                  <li key={u.title} className="glass-hover flex h-full animate-fade-up items-start gap-3 p-3.5">
+                    <span className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-white/15 text-grass-300">
+                      {u.icon}
+                    </span>
+                    <span>
+                      <span className="block text-[14.5px] font-bold text-white">{u.title}</span>
+                      <span className="mt-0.5 block text-[13px] leading-snug text-navy-200">
+                        {u.body}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
 
-            <div
-              className="mt-9 flex animate-fade-up flex-col gap-3 sm:flex-row"
-              style={{ animationDelay: '.42s' }}
-            >
-              <Link href="#start" className="btn-accent px-9 text-lg">
-                See My Options →
-              </Link>
-              <a href={SITE.phoneHref} className="btn-glass px-8">
-                Call {SITE.phone}
-              </a>
+              <div
+                className="mt-8 flex animate-fade-up flex-col gap-3 sm:flex-row"
+                style={{ animationDelay: '.5s' }}
+              >
+                <Link href="#start" className="btn-accent group relative overflow-hidden px-9 text-lg">
+                  <span className="relative z-10">See My Options</span>
+                  <span className="relative z-10 transition-transform group-hover:translate-x-1" aria-hidden="true">
+                    →
+                  </span>
+                  {/* shine sweep on hover */}
+                  <span
+                    className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+                    aria-hidden="true"
+                  />
+                </Link>
+                <a href={SITE.phoneHref} className="btn-glass px-8">
+                  Call {SITE.phone}
+                </a>
+              </div>
             </div>
 
             <div
-              className="mt-8 max-w-xl animate-fade-up rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm"
-              style={{ animationDelay: '.5s' }}
+              id="start"
+              className="animate-scale-in scroll-mt-24 rounded-2xl animate-glow-ring"
+              style={{ animationDelay: '.25s' }}
             >
-              <p className="text-xs leading-relaxed text-navy-100">
-                <strong className="font-bold text-white">Important:</strong> My Health Enrollment
-                is an independent, licensed insurance agency. We are{' '}
-                <strong className="font-bold text-white">
-                  not affiliated with or endorsed by the U.S. government
-                </strong>{' '}
-                or CMS. Calling{' '}
-                <a href={SITE.phoneHref} className="font-bold text-teal-200 underline underline-offset-2">
-                  {SITE.phone}
-                </a>{' '}
-                connects you first to the My Health Enrollment AI customer support assistant. It
-                may collect basic routing information, help with general educational questions,
-                send a secure enrollment link or schedule a callback with consent, and connect you
-                with a licensed insurance agent when appropriate. Do not provide Social Security
-                numbers, banking information, payment card information, passwords, or sensitive
-                medical information to the AI assistant. Plans and availability vary by state. Not
-                all plans are available in all areas.
-              </p>
+              <QuizFunnel source="home-hero" />
+
+              <div className="mt-4 flex items-start gap-3 rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 flex-shrink-0 text-grass-300" aria-hidden="true">
+                  <rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                </svg>
+                <p className="text-[13px] leading-relaxed text-navy-100">
+                  <strong className="font-bold text-white">This form never asks for sensitive data.</strong>{' '}
+                  No Social Security number, no banking or card details, no passwords. Anyone who
+                  asks for those by web form, text or email is not us.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div id="start" className="animate-scale-in scroll-mt-24" style={{ animationDelay: '.25s' }}>
-            <QuizFunnel source="home-hero" />
+          {/* Full width so the notice reads in a few lines instead of a tall
+              narrow column, which keeps the hero short. */}
+          <div className="mt-10 animate-fade-up glass p-4 sm:p-5" style={{ animationDelay: '.6s' }}>
+            <p className="text-[12.5px] leading-relaxed text-navy-200">
+              <strong className="font-bold text-white">Important:</strong> My Health Enrollment is
+              an independent, licensed insurance agency. We are{' '}
+              <strong className="font-bold text-white">
+                not affiliated with or endorsed by the U.S. government
+              </strong>{' '}
+              or CMS. Calling{' '}
+              <a href={SITE.phoneHref} className="font-bold text-teal-200 underline underline-offset-2">
+                {SITE.phone}
+              </a>{' '}
+              connects you first to the My Health Enrollment AI customer support assistant. It may
+              collect basic routing information, help with general educational questions, send a
+              secure enrollment link or schedule a callback with consent, and connect you with a
+              licensed insurance agent when appropriate. Do not provide Social Security numbers,
+              banking information, payment card information, passwords, or sensitive medical
+              information to the AI assistant. Plans and availability vary by state. Not all plans
+              are available in all areas.
+            </p>
           </div>
         </div>
 

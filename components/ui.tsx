@@ -340,3 +340,16 @@ export const IconBuilding = () => (
 export const IconCalc = () => (
   <svg {...iconProps}><rect x="4" y="2" width="16" height="20" rx="2" /><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h8" /></svg>
 )
+
+export const IconBadge = () => (
+  <svg {...iconProps}><path d="M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" /><path d="m8.5 14-1 7 4.5-2.5L16.5 21l-1-7" /></svg>
+)
+export const IconWallet = () => (
+  <svg {...iconProps}><path d="M3 7a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v1" /><rect x="2" y="8" width="20" height="12" rx="2" /><path d="M17 14h.01" /></svg>
+)
+export const IconLock = () => (
+  <svg {...iconProps}><rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /><path d="M12 15v2" /></svg>
+)
+export const IconCompare = () => (
+  <svg {...iconProps}><path d="M12 3v18" /><path d="m6 8-4 6h8Z" /><path d="m18 8-4 6h8Z" /><path d="M4 5h6M14 5h6" /></svg>
+)
